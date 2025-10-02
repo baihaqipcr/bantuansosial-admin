@@ -21,7 +21,7 @@ class BansosController extends Controller
             ['penerima' => 'Rudi', 'jenisBantuan' => 'Beras', 'jumlahBantuan' => '5kg', 'status' => 'sedang diproses'],
             ['penerima' => 'Sahroni', 'jenisBantuan' => 'Telur', 'jumlahBantuan' => '1 papan', 'status' => 'sedang diproses'],
             ['penerima' => 'Gatot', 'jenisBantuan' => 'Minyak Goreng', 'jumlahBantuan' => '2 liter', 'status' => 'diterima'],
-            ['penerima' => 'Jarot', 'jenisBantuan' => 'Telur', 'jumlahBantuan' => '2 papan', 'status' => 'belum diterima'],
+            ['penerima' => 'Jarot', 'jenisBantuan' => 'Telur', 'jumlahBantuan' => '2 papan', 'status' => 'diterima'],
         ];
           return view('bansos', compact('dataBansos'));
 
