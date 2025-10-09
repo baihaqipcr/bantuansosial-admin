@@ -95,6 +95,9 @@
             </tr>
             @endforeach
         </table>
+        <a href="/auth">
+        <button>LOGIN</button>
+</a>
     </div>
 
 </body>
