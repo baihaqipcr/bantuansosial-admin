@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BansosController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\HomeController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -14,5 +16,11 @@ Route::get('/auth', [AuthController::class, 'showLoginForm']);
 
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 
+Route::get('/home', [HomeController::class, 'index']);
+
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+
+
+Route::post('question/store', [QuestionController::class, 'store'])
+		->name('question.store');
 
