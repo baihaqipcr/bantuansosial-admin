@@ -1,20 +1,3 @@
-<!--
-
-=========================================================
-* Volt Free - Bootstrap 5 Dashboard
-=========================================================
-
-* Product Page: https://themesberg.com/product/admin-dashboard/volt-bootstrap-5-dashboard
-* Copyright 2021 Themesberg (https://www.themesberg.com)
-* License (https://themesberg.com/licensing)
-
-* Designed and coded by https://themesberg.com
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. Please contact us to request a removal.
-
--->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,8 +26,8 @@
 <body>
 	<nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-lg-none">
 		<a class="navbar-brand me-lg-5" href="../../index.html">
-			<img class="navbar-brand-dark" src="{{asset('assets-admin/img/brand/light.svg')}}" alt="Volt logo" />
-			<img class="navbar-brand-light" src="{{asset('assets-admin/img/brand/dark.svg')}}" alt="Volt logo" />
+			<img class="navbar-brand-dark" src="{{asset('assets-admin/assets/img/brand/dark.svg')}}" alt="Volt logo" />
+			<img class="navbar-brand-light" src="{{asset('assets-admin/assets/img/brand/light.svg')}}" alt="Volt logo" />
 		</a>
 		<div class="d-flex align-items-center">
 			<button class="navbar-toggler d-lg-none collapsed" type="button" data-bs-toggle="collapse"
@@ -54,7 +37,8 @@
 			</button>
 		</div>
 	</nav>
-     <nav id="sidebarMenu" class="sidebar d-lg-block bg-gray-800 text-white collapse" data-simplebar>
+
+        <nav id="sidebarMenu" class="sidebar d-lg-block bg-gray-800 text-white collapse" data-simplebar>
         <div class="sidebar-inner px-4 pt-3">
             <div class="user-card d-flex d-md-none align-items-center justify-content-between justify-content-md-center pb-4">
                 <div class="d-flex align-items-center">
@@ -108,7 +92,7 @@
                                     <path fill-rule="evenodd" d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1h5v2H5a1 1 0 01-1-1zm7 1h4a1 1 0 001-1v-1h-5v2zm0-4h5V8h-5v2zM9 8H4v2h5V8z" clip-rule="evenodd"></path>
                                 </svg>
                             </span>
-                            <span class="sidebar-text">Tables</span>
+                            <span class="sidebar-text">Pelanggan<a href="{{ route('pelanggan.index') }}" class="nav-link"></span>
                         </span>
                         <span class="link-arrow">
                             <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -151,7 +135,7 @@
             </ul>
         </div>
     </nav>
-	
+
 	<main class="content">
 
 		<nav class="navbar navbar-top navbar-expand navbar-dashboard navbar-dark ps-0 pe-2 pb-0">
@@ -958,11 +942,11 @@
 	</main>
 
 	<!-- Core -->
-	<script src="{{asset('assets-admin/vendor/@popperjs/core/dist/umd/popper.min.js')}}"></script>
-	<script src="{{asset('assets-admin/vendor/bootstrap/dist/js/bootstrap.min.js')}}"></script>
-
+	<script src="{{asset('assets-admin/vendor/@popperjs/core/dist/umd/enums.min.js')}}"></script>
+	<script src="{{asset('assets-admin/vendor/bootstrap/dist/js/bootstrap.min.css')}}"></script>
 	<!-- Vendor JS -->
-	<script src="{{asset('assets-admin/vendor/onscreen/dist/on-screen.umd.min.js')}}"></script>
+
+
 </body>
 
 </html>

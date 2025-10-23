@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <!-- Primary Meta Tags -->
-	<title>Volt - Free Bootstrap 5 Dashboard</title>
+	<title>Edit Penerima Bantuan</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="title" content="Volt - Free Bootstrap 5 Dashboard">
 	<meta name="author" content="Themesberg">
@@ -263,13 +263,13 @@
                         </a>
                     </li>
                     <li class="breadcrumb-item"><a href="#">Penerima Bantuan</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Tambah Penerima Bantuan</li>
+                    <li class="breadcrumb-item active" aria-current="page">Edit Penerima Bantuan</li>
                 </ol>
             </nav>
             <div class="d-flex justify-content-between w-100 flex-wrap">
                 <div class="mb-3 mb-lg-0">
-                    <h1 class="h4">Tambah Penerima Bantuan</h1>
-                    <p class="mb-0">Form untuk menambahkan data penerima bantuan baru.</p>
+                    <h1 class="h4">Edit Penerima Bantuan</h1>
+                    <p class="mb-0">Form untuk mengedit data penerima.</p>
                 </div>
                 <div>
                     <a href="" class="btn btn-primary"><i class="far fa-question-circle me-1"></i> Kembali</a>
@@ -281,37 +281,41 @@
             <div class="col-12 mb-4">
                 <div class="card border-0 shadow components-section">
                     <div class="card-body">
-                        <form action="{{ route('pelanggan.store') }}" method="POST">
+                        <form action="{{ route('pelanggan.update', $dataPelanggan->pelanggan_id) }}" method="POST">
                             @csrf
+                            @method('PUT')
                             <div class="row mb-4">
                                 <div class="col-lg-4 col-sm-6">
                                     <!-- First Name -->
                                     <div class="mb-3">
-                                        <label for="nama_awal_penerima" class="form-label">Nama Awal</label>
-                                        <input type="text" name="nama_awal_penerima" id="nama_awal_penerima" class="form-control" required>
+                                        <label for="first_name" class="form-label">Nama Awal</label>
+                                        <input type="text" name="first_name" id="first_name" class="form-control"
+                                        value="{{ $dataPelanggan->first_name }}" required>
                                     </div>
 
                                     <!-- Last Name -->
                                     <div class="mb-3">
-                                        <label for="nama_akhir_penerima" class="form-label">Nama Terakhir</label>
-                                        <input type="text" name="nama_akhir_penerima" id="nama_akhir_penerima" class="form-control">
+                                        <label for="last_name" class="form-label">Nama Terakhir</label>
+                                        <input type="text" name="last_name" id="last_name" class="form-control"
+                                        value="{{ $dataPelanggan->last_name }}">
                                     </div>
                                 </div>
 
                                 <div class="col-lg-4 col-sm-6">
                                     <!-- Birthday -->
                                     <div class="mb-3">
-                                        <label for="tgl_lahir" class="form-label">Ulang Tahun</label>
-                                        <input type="date" name="tgl_lahir" id="tgl_lahir" class="form-control">
+                                        <label for="birthday" class="form-label">Ulang Tahun</label>
+                                        <input type="date" name="birthday" id="birthday" class="form-control"
+                                        value="{{ $dataPelanggan->birthday }}">
                                     </div>
 
                                     <!-- Gender -->
                                     <div class="mb-3">
-                                        <label for="kelamin" class="form-label">Jenis Kelamin</label>
-                                        <select id="gender" name="kelamin" class="form-select">
-                                            <option value="">-- Pilih --</option>
-                                            <option value="Male">Pria</option>
-                                            <option value="Female">Wanita</option>
+                                        <label for="gender" class="form-label">Kelamin</label>
+                                        <select id="gender" name="gender" class="form-select">
+                                            <option selected>Gender</option>
+                                            <option value="Male" {{$dataPelanggan->gender =='Male' ? 'selected' : ''}} >Male</option>
+                                            <option value="Female" {{$dataPelanggan->gender == 'Female' ? 'selected' : ''}}  >Female</option>
                                             <option value="Other">Other</option>
                                         </select>
                                     </div>
@@ -321,13 +325,15 @@
                                     <!-- Email -->
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Email</label>
-                                        <input type="text" name="email" id="email" class="form-control" required>
+                                        <input type="text" name="email" id="email" class="form-control"
+                                        value="{{ $dataPelanggan->email }}" required>
                                     </div>
 
                                     <!-- Phone -->
                                     <div class="mb-3">
-                                        <label for="no_tlp" class="form-label">Nomor Kontak</label>
-                                        <input type="text" name="no_tlp" id="no_tlp" class="form-control">
+                                        <label for="phone" class="form-label">Nomor Kontak</label>
+                                        <input type="text" name="phone" id="phone" class="form-control"
+                                        value="{{ $dataPelanggan->phone }}">
                                     </div>
 
                                     <!-- Buttons -->

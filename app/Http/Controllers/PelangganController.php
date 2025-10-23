@@ -12,7 +12,8 @@ class PelangganController extends Controller
      */
     public function index()
     {
-    
+        $data['dataPelanggan'] = Pelanggan::all();
+		return view('admin.pelanggan.index',$data);
     }
 
     /**
@@ -28,18 +29,18 @@ class PelangganController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        //dd($request->all());
 
-        //$data['first_name'] = $request->first_name;
-		//$data['last_name'] = $request->last_name;
-		//$data['birthday'] = $request->birthday;
-		//$data['gender'] = $request->gender;
-		//$data['email'] = $request->email;
-		//$data['phone'] = $request->phone;
+        $data['nama_awal_penerima'] = $request->nama_awal_penerima;
+		$data['nama_akhir_penerima'] = $request->nama_akhir_penerima;
+		$data['tgl_lahir'] = $request->tgl_lahir;
+		$data['kelamin'] = $request->kelamin;
+		$data['email'] = $request->email;
+		$data['no_tlp'] = $request->no_tlp;
 		
-		//Pelanggan::create($data);
+		Pelanggan::create($data);
 		
-		//return redirect()->route('pelanggan.index')->with('success','Penambahan Data Berhasil!');
+		return redirect()->route('pelanggan.index')->with('success','Penambahan Data Berhasil!');
     }
 
     /**
@@ -55,7 +56,8 @@ class PelangganController extends Controller
      */
     public function edit(string $id)
     {
-        //
+         $data['dataPelanggan'] = Pelanggan::findOrFail($id);
+         return view('admin.pelanggan.edit', $data);
     }
 
     /**
@@ -63,7 +65,18 @@ class PelangganController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+         $pelanggan_id = $id;
+        $pelanggan    = Pelanggan::findOrFail($pelanggan_id);
+
+        $pelanggan->nama_awal_penerima = $request->nama_awal_pelanggan;
+        $pelanggan->nama_akhir_penerima  = $request->nama_akhir_pelanggan;
+        $pelanggan->tgl_lahir   = $request->tgl_lahir;
+        $pelanggan->kelamin     = $request->kelamin;
+        $pelanggan->email      = $request->email;
+        $pelanggan->no_tlp      = $request->no_tlp;
+
+        $pelanggan->save();
+        return redirect()->route('pelanggan.index')->with('success', 'Perubahan Data Berhasil');
     }
 
     /**
@@ -71,6 +84,8 @@ class PelangganController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $pelanggan = Pelanggan::findOrFail($id);
+        $pelanggan->delete();
+        return redirect()->route('pelanggan.index')->with('Delete', 'Data berhasil dihapus');
     }
 }
