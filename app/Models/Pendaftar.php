@@ -3,12 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Http\Controllers\PenerimaController;
 
-class Penerima extends Model
+class Pendaftar extends Model
 {
-    protected $table        = 'penerima';
-    protected $primaryKey   = 'penerima_id';
+    protected $table        = 'pendaftar';
+    protected $primaryKey   = 'pendaftar_id';
     protected $fillable     = [
         'program_id',
         'warga_id',

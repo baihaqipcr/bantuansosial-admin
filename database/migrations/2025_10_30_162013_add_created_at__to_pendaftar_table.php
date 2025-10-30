@@ -11,17 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //1. penerima_bantuan
-        Schema::create('penerima', function (Blueprint $table) {
-            $table->id('penerima_id');
-            $table->string('program_id');
-            $table->string('warga_id');
-            $table->string('keterangan')->unique();
-            $table->timestamps();
+        Schema::table('pendaftar', function (Blueprint $table) {
+            //
         });
-        
-
-
     }
 
     /**
@@ -29,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('penerima');
+        Schema::table('pendaftar', function (Blueprint $table) {
+            //
+        });
     }
 };

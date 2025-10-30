@@ -11,17 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //1. penerima_bantuan
-        Schema::create('penerima', function (Blueprint $table) {
-            $table->id('penerima_id');
-            $table->string('program_id');
-            $table->string('warga_id');
-            $table->string('keterangan')->unique();
+         Schema::create('program', function (Blueprint $table) {
+            $table->id('program_id');
+            $table->string('kode')->unique();
+            $table->string('nama_program');
+            $table->year('tahun');
+            $table->text('deskripsi')->nullable();
+            $table->decimal('anggaran', 15, 2)->nullable();
             $table->timestamps();
         });
-        
-
-
     }
 
     /**
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('penerima');
+        Schema::dropIfExists('program');
     }
 };

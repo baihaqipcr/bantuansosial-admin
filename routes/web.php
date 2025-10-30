@@ -8,6 +8,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\PenerimaController;
+use App\Http\Controllers\ProgramBantuanController;
+use App\Http\Controllers\PendaftarController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -31,4 +33,9 @@ Route::resource('pelanggan', PelangganController::class);
 
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-Route::resource('penerima', PelangganController::class);
+Route::resource('penerima', PenerimaController::class);
+
+Route::resource('program', ProgramBantuanController::class);
+
+Route::resource('pendaftar', PendaftarController::class);
+

@@ -1,7 +1,7 @@
 @extends('layouts.admin.app')
 
 @section('content')
-    {{-- start main content --}}
+{{-- start main content --}}
     <div class="py-4">
         <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
             <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
@@ -15,45 +15,45 @@
                         </svg>
                     </a>
                 </li>
-                <li class="breadcrumb-item"><a href="#">Pelanggan</a></li>
+                <li class="breadcrumb-item"><a href="#">Pendaftar</a></li>
             </ol>
         </nav>
         <div class="d-flex justify-content-between w-100 flex-wrap">
             <div class="mb-3 mb-lg-0">
-                <h1 class="h4">Data Pelanggan</h1>
-                <p class="mb-0">List data seluruh pelanggan</p>
+                <h1 class="h4">Data Pendaftar</h1>
+                <p class="mb-0">List data seluruh pendaftar</p>
             </div>
             <div>
-                <a href="{{ route('penerima.create') }}" class="btn btn-success text-white"><i
+                <a href="{{ route('pendaftar.create') }}" class="btn btn-success text-white"><i
                         class="far fa-question-circle me-1"></i>
-                    Tambah Pelanggan</a>
+                    Tambah Pendaftar</a>
             </div>
         </div>
     </div>
 
     <div class="row">
         <div class="col-12 mb-4">
-            <div class="card border-0 shadow mb-4">
+            <div class="card border-0 shadow mb-4 bg-dark text-light">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table id="table-pelanggan" class="table table-centered table-nowrap mb-0 rounded">
-                            <thead class="thead-light">
+                        <table id="table-program" class="table table-dark table-hover table-bordered mb-0 rounded">
+                            <thead class="bg-secondary text-light">
                                 <tr>
-                                    <th class="border-0">ID Penerima</th>
+                                    <th class="border-0">ID Pendaftar</th>
                                     <th class="border-0">ID Program</th>
                                     <th class="border-0">ID Warga</th>
-                                    <th class="border-0">Keterangan</th>
+                                    <th class="border-0">Status Seleksi</th>
                                     <th class="border-0 rounded-end">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($dataPelanggan as $item)
+                                @foreach ($dataPendaftar as $item)
                                     <tr>
-                                        <td>{{ $item->penerima_id }}</td>
+                                        <td>{{ $item->pendaftar_id }}</td>
                                         <td>{{ $item->program_id }}</td>
                                         <td>{{ $item->warga_id }}</td>
                                         <td>{{ $item->keterangan }}</td>
-                                        <td><a href="{{ route('penerima.edit', $item->pelanggan_id) }}"
+                                        <td><a href="{{ route('pendaftar.edit', $item->pendaftar_id) }}"
                                                 class="btn btn-info btn-sm">
                                                 <svg class="icon icon-xs me-2" data-slot="icon" fill="none"
                                                     stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24"
@@ -64,7 +64,7 @@
                                                 </svg>
                                                 Edit
                                             </a>
-                                            <form action="{{ route('penerima.destroy', $item->pelanggan_id) }}"
+                                            <form action="{{ route('pendaftar.destroy', $item->program_id) }}"
                                                 method="POST" style="display:inline">
                                                 @csrf
                                                 @method('DELETE')

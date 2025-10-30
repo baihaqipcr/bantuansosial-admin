@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Penerima;
+use App\Http\Controllers\PenerimaController;
 
 class PenerimaController extends Controller
 {
@@ -12,8 +13,8 @@ class PenerimaController extends Controller
      */
     public function index()
     {
-        $data['dataPenerima'] = Pelanggan::all();
-        return view('admin.penerima_bantuan.index', $data);
+         $data['dataPenerima'] = Penerima::all();
+        return view('admin.penerima.index', $data);
     }
 
     /**
@@ -21,7 +22,7 @@ class PenerimaController extends Controller
      */
     public function create()
     {
-        return view('admin.pelanggan.create');
+        return view('admin.penerima.create');
     }
 
     /**
@@ -29,14 +30,16 @@ class PenerimaController extends Controller
      */
     public function store(Request $request)
     {
-        $data['pelanggan_id'] = $request->pelanggan_id;
-        $data['program_id']  = $request->program_id;
-        $data['warga_id']   = $request->warga_id;
-        $data['keterangan']     = $request->keterangan;
+        //dd($request->all());
 
-        Pelanggan::create($data);
+            $data['penerima_id']   = $request->penerima_id;
+            $data['program_id']    = $request->program_id;
+            $data['warga_id']      = $request->warga_id;
+            $data['keterangan']    = $request->keterangan;
 
-        return redirect()->route('penerima_bantuan.index')->with('success', 'Penambahan Data Berhasil!');
+        Penerima::create($data);
+
+        return redirect()->route('penerima.index')->with('success', 'Penambahan Data Berhasil!');
     }
 
     /**
@@ -52,7 +55,8 @@ class PenerimaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data['dataPenerima'] = Penerima::findOrFail($id);
+         return view('admin.penerima.edit', $data);
     }
 
     /**
@@ -60,7 +64,16 @@ class PenerimaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $penerima = Penerima::findOrFail($id);
+
+        $penerima->program_id  = $request->program_id;
+        $penerima->warga_id    = $request->warga_id;
+        $penerima->keterangan  = $request->keterangan;
+
+        $penerima->save();
+
+        return redirect()->route('penerima.index')->with('Sukses', 'Perubahan Data Berhasil');
+
     }
 
     /**
@@ -68,6 +81,8 @@ class PenerimaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $pelanggan = Penerima::findOrFail($id);
+        $pelanggan->delete();
+        return redirect()->route('penerima.index')->with('Delete', 'Data berhasil dihapus');
     }
 }

@@ -1,0 +1,38 @@
+//2. pendaftar_bantuan
+        Schema::create('pendaftar_bantuan', function (Blueprint $table) {
+            $table->id('pendaftar_id');
+            $table->foreignId('program_id')->constrained('program_bantuan')->onDelete('cascade');
+            $table->foreignId('warga_id')->constrained('warga')->onDelete('cascade');
+            $table->enum('status_seleksi', ['pending', 'diterima', 'ditolak'])->default('pending');
+            $table->timestamps();
+        });
+        //3. verifikasi_lapangan
+        Schema::create('verifikasi_lapangan', function (Blueprint $table) {
+            $table->id('verifikasi_id');
+            $table->foreignId('pendaftar_id')->constrained('pendaftar_bantuan')->onDelete('cascade');
+            $table->string('petugas');
+            $table->date('tanggal');
+            $table->text('catatan')->nullable();
+            $table->integer('skor')->nullable();
+            $table->timestamps();
+        });
+        //4. riwayat_penyaluran_bantuan  
+         Schema::create('riwayat_penyaluran_bantuan', function (Blueprint $table) {
+            $table->id('penyaluran_id');
+            $table->foreignId('program_id')->constrained('program_bantuan')->onDelete('cascade');
+            $table->foreignId('penerima_id')->constrained('penerima_bantuan')->onDelete('cascade');
+            $table->integer('tahap_ke');
+            $table->date('tanggal');
+            $table->decimal('nilai', 15, 2)->nullable();
+            $table->timestamps();
+        });
+        //5. program_bantuan
+        Schema::create('program_bantuan', function (Blueprint $table) {
+            $table->id('program_id');
+            $table->string('kode')->unique();
+            $table->string('nama_program');
+            $table->year('tahun');
+            $table->text('deskripsi')->nullable();
+            $table->decimal('anggaran', 15, 2)->nullable();
+            $table->timestamps();
+        });
