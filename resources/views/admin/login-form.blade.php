@@ -2,7 +2,7 @@
 <style>
     body {
     font-family: "Poppins", sans-serif;
-    background: linear-gradient(135deg, #5b86e5, #36d1dc);
+    background: linear-gradient(135deg, #2b2b2bff, #2b2b2bff);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,7 +12,7 @@
 
 /* ====== LOGIN CONTAINER ====== */
 form {
-    background: #ffffff;
+    background: #a00000ff;
     padding: 40px 50px;
     border-radius: 12px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
@@ -22,10 +22,11 @@ form {
 
 /* ====== TITLE ====== */
 h1 {
-    text-align: center;
-    color: #333;
-    font-size: 24px;
-    margin-bottom: 25px;
+    text-align: left;
+    color: #a00000ff;
+    font-size: 30px;
+    margin-bottom: 20px;
+    margin: 30px 0px 0px 0px;
 }
 
 /* ====== LABEL & INPUT ====== */
@@ -40,7 +41,7 @@ input[type="text"],
 input[type="password"] {
     width: 100%;
     padding: 10px 12px;
-    border: 1px solid #ccc;
+    border: 1px solid #2b2b2bff;
     border-radius: 6px;
     outline: none;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
@@ -48,7 +49,7 @@ input[type="password"] {
 
 input[type="text"]:focus,
 input[type="password"]:focus {
-    border-color: #5b86e5;
+    border-color: #1b1b1bff;
     box-shadow: 0 0 6px rgba(91, 134, 229, 0.4);
 }
 
@@ -100,15 +101,18 @@ button:hover {
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Halaman Login Aplikasi</title>
+    <title>Login Admin</title>
+    <h1>Login Admin</h1>
     <style>
+        
         body { font-family: sans-serif; margin: 50px; }
         .alert { padding: 10px; margin-bottom: 20px; border-radius: 5px; }
         .alert-error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
     </style>
+    
 </head>
 <body>
-    <h1>Masuk ke Akun Anda</h1>
+    
 
     @if ($errors->any())
         <div class="alert alert-error">
@@ -127,8 +131,7 @@ button:hover {
         </div>
     @endif
 
-    <form method="post" action="/bansos">
-        {{-- Token CSRF wajib untuk form POST di Laravel --}}
+    <form action="{{ route('login.post') }}" method="POST">
         @csrf 
 
         <div>

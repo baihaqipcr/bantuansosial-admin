@@ -19,7 +19,7 @@ Route::get('/bansos', [BansosController::class, 'index'])->name('bansos.index');
 
 Route::get('/auth', [AuthController::class, 'showLoginForm']);
 
-Route::post('/login', [AuthController::class, 'login'])->name('login.post');
+Route::post('login', [AuthController::class, 'login'])->name('login.post');
 
 Route::get('/home', [HomeController::class, 'index']);
 
@@ -39,3 +39,4 @@ Route::resource('program', ProgramBantuanController::class);
 
 Route::resource('pendaftar', PendaftarController::class);
 
+Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard')->middleware('auth');

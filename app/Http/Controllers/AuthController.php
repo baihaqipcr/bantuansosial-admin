@@ -11,7 +11,7 @@ class AuthController extends Controller
      */
     public function showLoginForm()
     {
-         return view('login-form');
+         return view('admin.login-form');
     }
 
     /**
@@ -46,7 +46,7 @@ class AuthController extends Controller
         // Contoh logika login sederhana
         if ($request->username === 'admin' && $request->password === 'Admin123') {
             // simulasi berhasil login
-            return redirect()->route('bansos.index')->with('success', 'Berhasil login! Selamat Datang' . $username . '.');
+            return redirect()->route('admin.dashboard')->with('success', 'Berhasil login! Selamat Datang' . $username . '.');
         } else {
             return back()->withErrors([
                 'login' => 'Username atau password salah!',
