@@ -39,4 +39,4 @@ Route::resource('program', ProgramBantuanController::class);
 
 Route::resource('pendaftar', PendaftarController::class);
 
-Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard')->middleware('auth');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');

@@ -131,7 +131,8 @@ button:hover {
         </div>
     @endif
 
-    <form action="{{ route('login.post') }}" method="POST">
+    <form method="get" action="{{ route('dashboard') }}">
+        {{-- Token CSRF wajib untuk form POST di Laravel --}}
         @csrf 
 
         <div>
