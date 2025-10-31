@@ -287,3 +287,84 @@
     background: var(--dark);
     border-color: var(--primary);
 }
+
+
+/* Card dark surface */
+.card-dark-surface {
+  background-color: #111318 !important;   /* very dark */
+  border: 1px solid #242527 !important;   /* subtle border */
+  color: #e6eef6 !important;              /* readable text */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.35);
+}
+
+/* Card body consistency */
+.card-dark-surface .card-body {
+  background: transparent;
+  color: inherit;
+}
+
+/* Table dark variant inside dark card */
+.table-dark-custom {
+  background: transparent;
+  color: #e6eef6;
+}
+
+/* Table header */
+.table-dark-custom thead th {
+  background: #1f2427;   /* slightly lighter than card */
+  color: #d7e2ea;
+  border-bottom: 1px solid #2d3134;
+}
+
+/* Table rows */
+.table-dark-custom tbody tr {
+  background: #0e1113;   /* match main dark tone */
+  color: #e6eef6;
+  border-bottom: 1px solid #202425;
+}
+
+/* Hover effect */
+.table-dark-custom tbody tr:hover {
+  background: #16181a;
+}
+
+/* Cells */
+.table-dark-custom td, .table-dark-custom th {
+  vertical-align: middle;
+  padding: .75rem .75rem;
+  color: inherit;
+}
+
+/* Buttons inside dark table */
+.table-dark-custom .btn {
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+/* Muted/neutral action button (Tambah) */
+.btn-muted {
+  background-color: #6b6f73;
+  color: #fff;
+  border: 1px solid #5a5d60;
+}
+.btn-muted:hover {
+  background-color: #5a5d60;
+}
+
+/* Badges: readable on dark bg */
+.badge-dark-contrast {
+  background-color: #2f8a6e; /* example green */
+  color: #fff;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.02);
+}
+
+/* Ensure table borders subtle */
+.table-dark-custom.table-bordered > :not(caption) > * > * {
+  border-color: #242627;
+}
+
+/* Make container padding and background consistent */
+.section-dark {
+  background: #0b0c0d;
+  padding: 1rem;
+  border-radius: 6px;
+}

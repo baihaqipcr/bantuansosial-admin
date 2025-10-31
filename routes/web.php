@@ -12,10 +12,21 @@ use App\Http\Controllers\ProgramBantuanController;
 use App\Http\Controllers\PendaftarController;
 
 Route::get('/', function () {
-    return view('welcome');
+    if (Auth::check()) {
+        // Jika sudah login (admin)
+        return redirect()->route('login');
+    } else {
+        // Jika belum login (guest)
+        return view('home'); // pastikan file home.blade.php ada di resources/views/
+    }
 });
 
-Route::get('/bansos', [BansosController::class, 'index'])->name('bansos.index'); 
+Route::post('/logout', function () {
+    Auth::logout();
+    return redirect('/login');
+})->name('logout');
+
+Route::get('/bansos', [BansosController::class, 'index'])->name('bansos.index');
 
 Route::get('/auth', [AuthController::class, 'showLoginForm']);
 
@@ -39,4 +50,4 @@ Route::resource('program', ProgramBantuanController::class);
 
 Route::resource('pendaftar', PendaftarController::class);
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

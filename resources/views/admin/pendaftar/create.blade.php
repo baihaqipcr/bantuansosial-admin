@@ -28,7 +28,7 @@
 
         <div class="row">
             <div class="col-12 mb-4">
-                <div class="card border-0 shadow mb-2 bg-gray text-light">
+                <div class="card border-0 shadow mb-4 card-dark-surface">
                     <div class="card-body">
                         <form action="{{ route('pendaftar.store') }}" method="POST">
                             @csrf
@@ -36,8 +36,8 @@
                                 <!-- ID Pendaftar (otomatis / readonly) -->
                                         <div class="mb-3">
                                             <label for="pendaftar_id" class="form-label">ID Pendaftar</label>
-                                            <input type="text" name="pendaftar_id" id="pendaftar_id" 
-                                                class="form-control" value="{{ old('pendaftar_id', $pendaftar->pendaftar_id ?? 'AUTO') }}" 
+                                            <input type="text" name="pendaftar_id" id="pendaftar_id"
+                                                class="form-control" value="{{ old('pendaftar_id', $pendaftar->pendaftar_id ?? 'AUTO') }}"
                                                 readonly>
                                             <small class="text-muted">ID dibuat otomatis oleh sistem</small>
                                         </div>
@@ -45,9 +45,9 @@
                                         <!-- ID Program -->
                                         <div class="mb-3">
                                             <label for="program_id" class="form-label">Kode</label>
-                                            <input type="text" name="program_id" id="program_id" 
-                                                class="form-control" 
-                                                value="{{ old('program', $pendaftar->program ?? '') }}" 
+                                            <input type="text" name="program_id" id="program_id"
+                                                class="form-control"
+                                                value="{{ old('program', $pendaftar->program ?? '') }}"
                                                 required>
                                         </div>
                                     </div>
@@ -56,18 +56,18 @@
                                         <!-- ID Warga -->
                                         <div class="mb-3">
                                             <label for="warga_id" class="form-label">Nama Program</label>
-                                            <input type="text" name="warga_id" id="warga_id" 
-                                                class="form-control" 
-                                                value="{{ old('warga_id', $pendaftar->warga ?? '') }}" 
+                                            <input type="text" name="warga_id" id="warga_id"
+                                                class="form-control"
+                                                value="{{ old('warga_id', $pendaftar->warga ?? '') }}"
                                                 required>
                                         </div>
 
                                         <!-- Keterangan -->
                                         <div class="mb-3">
                                             <label for="keterangan" class="form-label">Status Seleksi</label>
-                                            <input type="text" name="keterangan" id="keterangan" 
-                                                class="form-control" 
-                                                value="{{ old('keterangan', $pendaftar->keterangan ?? '') }}" 
+                                            <input type="text" name="keterangan" id="keterangan"
+                                                class="form-control"
+                                                value="{{ old('keterangan', $pendaftar->keterangan ?? '') }}"
                                                 required>
                                         </div>
                                     </div>

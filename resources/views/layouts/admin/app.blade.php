@@ -12,7 +12,8 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap"
+        rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -32,17 +33,17 @@
 <body>
     <div class="container-fluid position-relative d-flex p-0">
         <!-- Spinner Start -->
-		 @include('layouts.admin.spinner')
+        @include('layouts.admin.spinner')
         <!-- Spinner End -->
 
         <!-- Sidebar Start -->
-		 @include('layouts.admin.sidebar')
+        @include('layouts.admin.sidebar')
         <!-- Sidebar End -->
 
         <!-- Content Start -->
         <div class="content">
             <!-- Navbar Start -->
-             @include('layouts.admin.navbar')
+            @include('layouts.admin.navbar')
             <!-- Navbar End -->
 
             <!-- Main Content -->
@@ -57,14 +58,20 @@
         </div>
         <!-- Content End -->
 
+
+
         <!-- Back to Top -->
         @include('layouts.admin.btt')
 
-    <!-- JavaScript Libraries -->
-	 @include('layouts.admin.js')
+        <!-- Floating WA -->
+        @include('layouts.admin.floatingwa')
+        <!-- End Floating WA -->
 
-    <!-- Template Javascript -->
-    @include('layouts.admin.templatejs')
+        <!-- JavaScript Libraries -->
+        @include('layouts.admin.js')
+
+        <!-- Template Javascript -->
+        @include('layouts.admin.templatejs')
 </body>
 
 </html>

@@ -44,14 +44,7 @@ class AuthController extends Controller
         ]);
 
         // Contoh logika login sederhana
-        if ($request->username === 'admin' && $request->password === 'Admin123') {
-            // simulasi berhasil login
-            return redirect()->route('admin.dashboard')->with('success', 'Berhasil login! Selamat Datang' . $username . '.');
-        } else {
-            return back()->withErrors([
-                'login' => 'Username atau password salah!',
-            ])->withInput();
-        }
+        $username = $request->username;
     }
 
     }

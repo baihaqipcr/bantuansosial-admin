@@ -28,7 +28,7 @@
 
         <div class="row">
             <div class="col-12 mb-4">
-                <div class="card border-0 shadow mb-2 bg-gray text-light">
+                <div class="card border-0 shadow mb-4 card-dark-surface">
                     <div class="card-body">
                         <form action="{{ route('penerima.store') }}" method="POST">
                             @csrf
@@ -36,8 +36,8 @@
                                 <!-- ID Penerima (otomatis / readonly) -->
                                         <div class="mb-3">
                                             <label for="penerima_id" class="form-label">ID Penerima</label>
-                                            <input type="text" name="penerima_id" id="penerima_id" 
-                                                class="form-control" value="{{ old('penerima_id', $penerima->penerima_id ?? 'AUTO') }}" 
+                                            <input type="text" name="penerima_id" id="penerima_id"
+                                                class="form-control" value="{{ old('penerima_id', $penerima->penerima_id ?? 'AUTO') }}"
                                                 readonly>
                                             <small class="text-muted">ID dibuat otomatis oleh sistem</small>
                                         </div>
@@ -45,8 +45,8 @@
                                         <!-- ID Program -->
                                         <div class="mb-3">
                                             <label for="program_id" class="form-label">ID Program</label>
-                                            <input type="text" name="program_id" id="program_id" 
-                                                class="form-control" 
+                                            <input type="text" name="program_id" id="program_id"
+                                                class="form-control"
                                                 value="{{ old('program_id') }}"
                                                 required>
                                         </div>
@@ -56,16 +56,16 @@
                                         <!-- ID Warga -->
                                         <div class="mb-3">
                                             <label for="warga_id" class="form-label">ID Warga</label>
-                                            <input type="text" name="warga_id" id="warga_id" 
-                                                class="form-control" 
-                                                value="{{ old('warga_id', $penerima->warga_id ?? '') }}" 
+                                            <input type="text" name="warga_id" id="warga_id"
+                                                class="form-control"
+                                                value="{{ old('warga_id', $penerima->warga_id ?? '') }}"
                                                 required>
                                         </div>
 
                                         <!-- Keterangan -->
                                         <div class="mb-3">
                                             <label for="keterangan" class="form-label">Keterangan</label>
-                                            <textarea name="keterangan" id="keterangan" 
+                                            <textarea name="keterangan" id="keterangan"
                                                     class="form-control" rows="3"
                                                     placeholder="Masukkan keterangan tambahan (opsional)">{{ old('keterangan', $penerima->keterangan ?? '') }}</textarea>
                                         </div>

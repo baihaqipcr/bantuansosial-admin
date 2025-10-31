@@ -12,13 +12,13 @@
                         </a>
                     </li>
                     <li class="breadcrumb-item"><a href="#">Pendaftar</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Tambah Pendaftar</li>
+                    <li class="breadcrumb-item active" aria-current="page">Edit Pendaftar</li>
                 </ol>
             </nav>
             <div class="d-flex justify-content-between w-100 flex-wrap">
                 <div class="mb-3 mb-lg-0">
-                    <h1 class="h4">Tambah Program Bantuan</h1>
-                    <p class="mb-0">Form untuk menambahkan data pendaftar.</p>
+                    <h1 class="h4">Edit Pendaftar</h1>
+                    <p class="mb-0">Form untuk mengedit data pendaftar.</p>
                 </div>
                 <div>
                     <a href="{{ route('pendaftar.index') }}" class="btn btn-primary"><i class="far fa-question-circle me-1"></i> Kembali</a>
@@ -28,17 +28,17 @@
 
         <div class="row">
             <div class="col-12 mb-4">
-                <div class="card border-0 shadow mb-2 bg-gray text-light">
+                <div class="card border-0 shadow mb-4 card-dark-surface">
                     <div class="card-body">
-                        <form action="{{ route('pendaftar.store') }}" method="POST">
+                        <form action="{{ route('pendaftar.update', $dataPendaftar->pendaftar_id) }}" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="row mb-4">
                                 <!-- ID Pendaftar (otomatis / readonly) -->
                                         <div class="mb-3">
                                             <label for="pendaftar_id" class="form-label">ID Pendaftar</label>
-                                            <input type="text" name="pendaftar_id" id="pendaftar_id" 
-                                                class="form-control" value="{{ old('pendaftar_id', $pendaftar->pendaftar_id ?? 'AUTO') }}" 
+                                            <input type="text" name="pendaftar_id" id="pendaftar_id"
+                                                class="form-control" value="{{ old('pendaftar_id', $pendaftar->pendaftar_id ?? 'AUTO') }}"
                                                 readonly>
                                             <small class="text-muted">ID dibuat otomatis oleh sistem</small>
                                         </div>
@@ -46,9 +46,9 @@
                                         <!-- ID Program -->
                                         <div class="mb-3">
                                             <label for="program_id" class="form-label">Kode</label>
-                                            <input type="text" name="program_id" id="program_id" 
-                                                class="form-control" 
-                                                value="{{ old('program', $pendaftar->program ?? '') }}" 
+                                            <input type="text" name="program_id" id="program_id"
+                                                class="form-control"
+                                                value="{{ old('program', $pendaftar->program ?? '') }}"
                                                 required>
                                         </div>
                                     </div>
@@ -56,19 +56,19 @@
                                     <div class="col-lg-4 col-sm-6">
                                         <!-- ID Warga -->
                                         <div class="mb-3">
-                                            <label for="warga_id" class="form-label">Nama Program</label>
-                                            <input type="text" name="warga_id" id="warga_id" 
-                                                class="form-control" 
-                                                value="{{ old('warga_id', $pendaftar->warga ?? '') }}" 
+                                            <label for="warga_id" class="form-label">ID Warga</label>
+                                            <input type="text" name="warga_id" id="warga_id"
+                                                class="form-control"
+                                                value="{{ old('warga_id', $pendaftar->warga_id ?? '') }}"
                                                 required>
                                         </div>
 
                                         <!-- Keterangan -->
                                         <div class="mb-3">
                                             <label for="keterangan" class="form-label">Status Seleksi</label>
-                                            <input type="text" name="keterangan" id="keterangan" 
-                                                class="form-control" 
-                                                value="{{ old('keterangan', $pendaftar->keterangan ?? '') }}" 
+                                            <input type="text" name="keterangan" id="keterangan"
+                                                class="form-control"
+                                                value="{{ old('keterangan', $pendaftar->keterangan ?? '') }}"
                                                 required>
                                         </div>
                                     </div>

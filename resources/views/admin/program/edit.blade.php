@@ -28,7 +28,7 @@
 
         <div class="row">
             <div class="col-12 mb-4">
-                <div class="card border-0 shadow mb-2 bg-gray text-light">
+                <div class="card border-0 shadow mb-4 card-dark-surface">
                     <div class="card-body">
                         <form action="{{ route('program.update', $dataProgram->program_id) }}" method="POST">
                             @csrf
@@ -37,8 +37,8 @@
                                 <!-- ID Penerima (otomatis / readonly) -->
                                         <div class="mb-3">
                                             <label for="program_id" class="form-label">ID Program</label>
-                                            <input type="text" name="program_id" id="program_id" 
-                                                class="form-control" value="{{ old('program_id', $program->program_id ?? 'AUTO') }}" 
+                                            <input type="text" name="program_id" id="program_id"
+                                                class="form-control" value="{{ old('program_id', $program->program_id ?? 'AUTO') }}"
                                                 readonly>
                                             <small class="text-muted">ID dibuat otomatis oleh sistem</small>
                                         </div>
@@ -46,9 +46,9 @@
                                         <!-- ID Program -->
                                         <div class="mb-3">
                                             <label for="kode" class="form-label">Kode</label>
-                                            <input type="text" name="kode" id="kode" 
-                                                class="form-control" 
-                                                value="{{ old('kode', $program->kode ?? '') }}" 
+                                            <input type="text" name="kode" id="kode"
+                                                class="form-control"
+                                                value="{{ old('kode', $program->kode ?? '') }}"
                                                 required>
                                         </div>
                                     </div>
@@ -57,34 +57,34 @@
                                         <!-- ID Warga -->
                                         <div class="mb-3">
                                             <label for="nama_program" class="form-label">Nama Program</label>
-                                            <input type="text" name="nama_program" id="nama_program" 
-                                                class="form-control" 
-                                                value="{{ old('nama_program', $program->nama_program ?? '') }}" 
+                                            <input type="text" name="nama_program" id="nama_program"
+                                                class="form-control"
+                                                value="{{ old('nama_program', $program->nama_program ?? '') }}"
                                                 required>
                                         </div>
 
                                         <!-- Keterangan -->
                                         <div class="mb-3">
                                             <label for="tahun" class="form-label">Tahun</label>
-                                            <input type="date" name="tahun" id="tahun" 
-                                                class="form-control" 
-                                                value="{{ old('tahun', $program->tahun ?? '') }}" 
+                                            <input type="date" name="tahun" id="tahun"
+                                                class="form-control"
+                                                value="{{ old('tahun', $program->tahun ?? '') }}"
                                                 required>
                                         </div>
                                         <!-- Keterangan -->
                                         <div class="mb-3">
                                             <label for="deskripsi" class="form-label">Deskripsi</label>
-                                            <textarea name="deskripsi" id="deskripsi" 
+                                            <textarea name="deskripsi" id="deskripsi"
                                                     class="form-control" rows="3"
                                                     placeholder="Masukkan deskripsi">{{ old('keterangan', $penerima->keterangan ?? '') }}</textarea>
                                         </div>
-                                        
+
                                         <!-- Keterangan -->
                                          <div class="mb-3">
                                             <label for="anggaran" class="form-label">Anggaran</label>
-                                            <input type="anggaran" name="tahun" id="anggaran" 
-                                                class="form-control" 
-                                                value="{{ old('anggaran', $program->anggaran ?? '') }}" 
+                                            <input type="anggaran" name="tahun" id="anggaran"
+                                                class="form-control"
+                                                value="{{ old('anggaran', $program->anggaran ?? '') }}"
                                                 required>
                                         </div>
                                     </div>

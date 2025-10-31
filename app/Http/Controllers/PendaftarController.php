@@ -65,9 +65,9 @@ class PendaftarController extends Controller
 
         $pendaftar->program_id    = $request->program_id;
         $pendaftar->warga_id  = $request->warga_id;
-        $program->keterangan  = $request->pendaftar;
+        $pendaftar->keterangan  = $request->keterangan;
 
-        $program->save();
+        $pendaftar->save();
 
         return redirect()->route('pendaftar.index')->with('Sukses', 'Perubahan Data Berhasil');
     }
