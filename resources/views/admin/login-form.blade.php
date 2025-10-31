@@ -16,6 +16,14 @@
         height: 100vh;
         margin: -20px 0 50px;
     }
+    @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
 
     h1 {
         font-weight: bold;
@@ -57,6 +65,11 @@
         text-transform: uppercase;
         transition: transform 80ms ease-in;
     }
+    button:hover {
+        transform: scale(1.1);
+        box-shadow: 0 8px 20px rgba(255, 75, 43, 0.3);
+    }
+        
 
     button:active {
         transform: scale(0.95);
@@ -91,7 +104,7 @@
     }
 
     .container {
-        background-color: #fff;
+        background-color: #343a40;
         border-radius: 10px;
         box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
             0 10px 10px rgba(0, 0, 0, 0.22);
@@ -170,7 +183,7 @@
         background-repeat: no-repeat;
         background-size: cover;
         background-position: 0 0;
-        color: #FFFFFF;
+        color: #343a40;
         position: relative;
         left: -100%;
         height: 100%;
@@ -285,13 +298,13 @@
                     {{-- Token CSRF wajib untuk form POST di Laravel --}}
                     @csrf
 
-                    <div>
+                    <div class="container.right-panel-active .sign-in-container">
                         <label for="username"> Nama Pengguna (Username):</label><br>
                         {{-- old('username') digunakan untuk mempertahankan input jika validasi gagal --}}
                         <input type="text" id="username" name="username" value="{{ old('username') }}" required>
                     </div>
                     <br>
-                    <div>
+                    <div class= "container.right-panel-active .sign-in-container">
                         <label for="password"> Kata Sandi (Password):</label><br>
                         <input type="password" id="password" name="password" required>
                     </div>
