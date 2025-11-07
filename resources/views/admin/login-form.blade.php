@@ -1,282 +1,152 @@
 <!DOCTYPE html>
-<style>
-    @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
-
-    * {
-        box-sizing: border-box;
-    }
-
-    body {
-        background: #f6f5f7;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        font-family: 'Montserrat', sans-serif;
-        height: 100vh;
-        margin: -20px 0 50px;
-    }
-    @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Login</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,800" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
         }
 
-    h1 {
-        font-weight: bold;
-        margin: 0;
-    }
-
-    h2 {
-        text-align: center;
-    }
-
-    p {
-        font-size: 14px;
-        font-weight: 100;
-        line-height: 20px;
-        letter-spacing: 0.5px;
-        margin: 20px 0 30px;
-    }
-
-    span {
-        font-size: 12px;
-    }
-
-    a {
-        color: #333;
-        font-size: 14px;
-        text-decoration: none;
-        margin: 15px 0;
-    }
-
-    button {
-        border-radius: 20px;
-        border: 1px solid #FF4B2B;
-        background-color: #FF4B2B;
-        color: #FFFFFF;
-        font-size: 12px;
-        font-weight: bold;
-        padding: 12px 45px;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        transition: transform 80ms ease-in;
-    }
-    button:hover {
-        transform: scale(1.1);
-        box-shadow: 0 8px 20px rgba(255, 75, 43, 0.3);
-    }
-        
-
-    button:active {
-        transform: scale(0.95);
-    }
-
-    button:focus {
-        outline: none;
-    }
-
-    button.ghost {
-        background-color: transparent;
-        border-color: #FFFFFF;
-    }
-
-    form {
-        background-color: #FFFFFF;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        padding: 0 50px;
-        height: 100%;
-        text-align: center;
-    }
-
-    input {
-        background-color: #eee;
-        border: none;
-        padding: 12px 15px;
-        margin: 8px 0;
-        width: 100%;
-    }
-
-    .container {
-        background-color: #343a40;
-        border-radius: 10px;
-        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
-            0 10px 10px rgba(0, 0, 0, 0.22);
-        position: relative;
-        overflow: hidden;
-        width: 768px;
-        max-width: 100%;
-        min-height: 480px;
-    }
-
-    .form-container {
-        position: absolute;
-        top: 0;
-        height: 100%;
-        transition: all 0.6s ease-in-out;
-    }
-
-    .sign-in-container {
-        left: 0;
-        width: 50%;
-        z-index: 2;
-    }
-
-    .container.right-panel-active .sign-in-container {
-        transform: translateX(100%);
-    }
-
-    .sign-up-container {
-        left: 0;
-        width: 50%;
-        opacity: 0;
-        z-index: 1;
-    }
-
-    .container.right-panel-active .sign-up-container {
-        transform: translateX(100%);
-        opacity: 1;
-        z-index: 5;
-        animation: show 0.6s;
-    }
-
-    @keyframes show {
-
-        0%,
-        49.99% {
-            opacity: 0;
-            z-index: 1;
+        body {
+            background: linear-gradient(to right, #191C24, #EB1616);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Montserrat', sans-serif;
+            height: 100vh;
+            margin: 0;
         }
 
-        50%,
-        100% {
-            opacity: 1;
-            z-index: 5;
+        .login-container {
+            display: flex;
+            width: 850px;
+            max-width: 95%;
+            height: 520px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            animation: fadeIn 0.8s ease-in-out;
         }
-    }
 
-    .overlay-container {
-        position: absolute;
-        top: 0;
-        left: 50%;
-        width: 50%;
-        height: 100%;
-        overflow: hidden;
-        transition: transform 0.6s ease-in-out;
-        z-index: 100;
-    }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-    .container.right-panel-active .overlay-container {
-        transform: translateX(-100%);
-    }
+        .login-image {
+            flex: 4;
+            background: url('https://www.klampok.id/wp-content/uploads/2020/05/bantuan-sosial.png') no-repeat center center;
+            background-size: cover;
+        }
 
-    .overlay {
-        background: #FF416C;
-        background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
-        background: linear-gradient(to right, #FF4B2B, #FF416C);
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: 0 0;
-        color: #343a40;
-        position: relative;
-        left: -100%;
-        height: 100%;
-        width: 200%;
-        transform: translateX(0);
-        transition: transform 0.6s ease-in-out;
-    }
+        .login-form {
+            flex: 2;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            background-color: #f6f5f7;
+        }
 
-    .container.right-panel-active .overlay {
-        transform: translateX(50%);
-    }
+        h1 {
+            font-weight: 800;
+            color: #FF4B2B;
+            margin-bottom: 10px;
+        }
 
-    .overlay-panel {
-        position: absolute;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        padding: 0 40px;
-        text-align: center;
-        top: 0;
-        height: 100%;
-        width: 50%;
-        transform: translateX(0);
-        transition: transform 0.6s ease-in-out;
-    }
+        p {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 30px;
+        }
 
-    .overlay-left {
-        transform: translateX(-20%);
-    }
+        label {
+            font-size: 13px;
+            color: #333;
+            display: block;
+            text-align: left;
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
 
-    .container.right-panel-active .overlay-left {
-        transform: translateX(0);
-    }
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            border: none;
+            background-color: #eee;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
 
-    .overlay-right {
-        right: 0;
-        transform: translateX(0);
-    }
+        input:focus {
+            background-color: #fff;
+            outline: none;
+            box-shadow: 0 0 5px rgba(255, 75, 43, 0.4);
+        }
 
-    .container.right-panel-active .overlay-right {
-        transform: translateX(20%);
-    }
+        button {
+            border-radius: 25px;
+            border: none;
+            background-color: #FF4B2B;
+            color: #fff;
+            font-size: 14px;
+            font-weight: bold;
+            padding: 12px 45px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
 
-    .social-container {
-        margin: 20px 0;
-    }
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(255, 75, 43, 0.3);
+        }
 
-    .social-container a {
-        border: 1px solid #DDDDDD;
-        border-radius: 50%;
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        margin: 0 5px;
-        height: 40px;
-        width: 40px;
-    }
+        .alert {
+            background-color: #ffcccc;
+            color: #b30000;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            text-align: left;
+            font-size: 13px;
+        }
 
-    footer {
-        background-color: #222;
-        color: #fff;
-        font-size: 14px;
-        bottom: 0;
-        position: fixed;
-        left: 0;
-        right: 0;
-        text-align: center;
-        z-index: 999;
-    }
+        footer {
+            position: fixed;
+            bottom: 0;
+            background-color: #222;
+            color: #fff;
+            width: 100%;
+            text-align: center;
+            font-size: 14px;
+            padding: 10px 0;
+        }
 
-    footer p {
-        margin: 10px 0;
-    }
+        footer a {
+            color: #FF4B2B;
+            text-decoration: none;
+        }
 
-    footer i {
-        color: red;
-    }
-
-    footer a {
-        color: #3c97bf;
-        text-decoration: none;
-    }
-</style>
-
+        footer i {
+            color: red;
+        }
+    </style>
 </head>
 
 <body>
 
-
     @if ($errors->any())
-        <div class="alert alert-error">
-            <strong>Terjadi Kesalahan: </strong>
+        <div class="alert">
+            <strong>Terjadi Kesalahan:</strong>
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -286,33 +156,35 @@
     @endif
 
     @if (session('error'))
-        <div class="alert alert-error">
+        <div class="alert">
             {{ session('error') }}
         </div>
     @endif
 
-    <div class="container" id="container">
-            <div class="form-container sign-in-container">
+    <div class="login-container">
+        <div class="login-image"></div>
 
-                <form method="get" action="{{ route('dashboard') }}">
-                    {{-- Token CSRF wajib untuk form POST di Laravel --}}
-                    @csrf
+        <div class="login-form">
+            <h1>Selamat Datang</h1>
+            <p>Silakan masuk ke akun Anda</p>
 
-                    <div class="container.right-panel-active .sign-in-container">
-                        <label for="username"> Nama Pengguna (Username):</label><br>
-                        {{-- old('username') digunakan untuk mempertahankan input jika validasi gagal --}}
-                        <input type="text" id="username" name="username" value="{{ old('username') }}" required>
-                    </div>
-                    <br>
-                    <div class= "container.right-panel-active .sign-in-container">
-                        <label for="password"> Kata Sandi (Password):</label><br>
-                        <input type="password" id="password" name="password" required>
-                    </div>
-                    <br>
-                    <button type="submit">Login</button>
-                </form>
-            </div>
+            <form method="GET" action="{{ route('dashboard') }}">
+                @csrf
+
+                <label for="username">Nama Admin</label>
+                <input type="text" id="username" name="username" value="{{ old('username') }}" required>
+
+                <label for="password">Kata Sandi</label>
+                <input type="password" id="password" name="password" required>
+
+                <button type="submit">Masuk</button>
+            </form>
+        </div>
     </div>
-</body>
 
+    <footer>
+        <p>© 2025 <a href="#">Bantuan Sosial</a> — Dibuat dengan <i>❤</i> oleh Tim Penguasa Dunia</p>
+    </footer>
+
+</body>
 </html>

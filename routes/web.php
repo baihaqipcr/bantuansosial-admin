@@ -12,14 +12,9 @@ use App\Http\Controllers\ProgramBantuanController;
 use App\Http\Controllers\PendaftarController;
 
 Route::get('/', function () {
-    if (Auth::check()) {
-        // Jika sudah login (admin)
-        return redirect()->route('login');
-    } else {
-        // Jika belum login (guest)
-        return view('home'); // pastikan file home.blade.php ada di resources/views/
-    }
-});
+    Auth::check();
+    return redirect('/login');
+})->name('login');
 
 Route::post('/logout', function () {
     Auth::logout();
