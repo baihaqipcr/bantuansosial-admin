@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Penerima;
+use App\Models\Pendaftar;
+use App\Models\ProgramBantuan;
 
 class DashboardController extends Controller
 {
@@ -11,7 +14,12 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard');
+
+        $penerima = Penerima::count();
+        $pendaftar = Pendaftar::count();
+        $program   = ProgramBantuan::count();
+
+        return view('admin.dashboard', compact('penerima', 'pendaftar', 'program'));
     }
 
     /**

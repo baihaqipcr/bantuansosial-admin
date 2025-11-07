@@ -49,26 +49,98 @@
 
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
+                    <!-- Chart 1 -->
                     <div class="col-sm-12 col-xl-6">
                         <div class="bg-secondary text-center rounded p-4">
                             <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h6 class="mb-0">Worldwide Sales</h6>
-                                <a href="">Show All</a>
+                                <h6 class="mb-0">Data Statistik</h6>
+                                <a href="#">Lihat Detail</a>
                             </div>
-                            <canvas id="worldwide-sales"></canvas> <!-- 🟩 Chart pertama -->
+                            <canvas id="dataChart"></canvas>
                         </div>
                     </div>
+
+                    <!-- Chart 2 -->
                     <div class="col-sm-12 col-xl-6">
                         <div class="bg-secondary text-center rounded p-4">
                             <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h6 class="mb-0">Salse & Revenue</h6>
-                                <a href="">Show All</a>
+                                <h6 class="mb-0">Perbandingan Jumlah</h6>
+                                <a href="#">Lihat Detail</a>
                             </div>
-                            <canvas id="salse-revenue"></canvas> <!-- 🟩 Chart kedua -->
+                            <canvas id="comparisonChart"></canvas>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Chart.js -->
+            <script>
+                const dataChart = document.getElementById('dataChart').getContext('2d');
+                const comparisonChart = document.getElementById('comparisonChart').getContext('2d');
+
+                // Data dari Laravel
+                const penerima = {{ $penerima ?? 0 }};
+                const pendaftar = {{ $pendaftar ?? 0 }};
+                const program = {{ $program ?? 0 }};
+
+                // Chart 1 - Pie Chart
+                new Chart(dataChart, {
+                    type: 'pie',
+                    data: {
+                        labels: ['Penerima', 'Pendaftar', 'Program'],
+                        datasets: [{
+                            data: [penerima, pendaftar, program],
+                            backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
+                        }]
+                    },
+                    options: {
+                        plugins: {
+                            legend: {
+                                labels: {
+                                    color: '#fff'
+                                }
+                            }
+                        }
+                    }
+                });
+
+                // Chart 2 - Bar Chart
+                new Chart(comparisonChart, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Penerima', 'Pendaftar', 'Program'],
+                        datasets: [{
+                            label: 'Jumlah Data',
+                            data: [penerima, pendaftar, program],
+                            backgroundColor: ['#4BC0C0', '#9966FF', '#FF9F40']
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            x: {
+                                ticks: {
+                                    color: '#fff'
+                                }
+                            },
+                            y: {
+                                ticks: {
+                                    color: '#fff',
+                                    stepSize: 1
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                labels: {
+                                    color: '#fff'
+                                }
+                            }
+                        }
+                    }
+                });
+            </script>
+
+
 
 
             <!-- Main Content -->

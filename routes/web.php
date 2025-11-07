@@ -46,3 +46,5 @@ Route::resource('program', ProgramBantuanController::class);
 Route::resource('pendaftar', PendaftarController::class);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+
