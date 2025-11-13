@@ -12,7 +12,17 @@
                               alt="" style="width: 40px; height: 40px;">
                           <span class="d-none d-lg-inline-flex">HQ</span>
                       </a>
-               
+                      <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                          <a href="#" class="dropdown-item">My Profile</a>
+                          <a href="#" class="dropdown-item">Settings</a>
+                          <form action="{{ route('logout') }}" method="POST" class="dropdown-item p-0 m-0">
+                              @csrf
+                              <button type="submit" class="btn btn-link text-start w-100 text-light"
+                                  style="text-decoration:none;">
+                                  Log Out
+                              </button>
+                          </form>
+                      </div>
                   </div>
               </div>
           </nav>

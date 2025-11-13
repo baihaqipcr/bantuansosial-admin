@@ -38,5 +38,13 @@
                             <i class="#"></i>Pendaftar
                         </a>
                     </div>
+                    <div>
+                        <form action="{{ route('logout') }}" method="POST" class="mt-auto text-center">
+                            @csrf
+                            <button type="submit" class="btn btn-danger w-75 logout-btn mt-3">
+                                <i class="fa fa-sign-out-alt me-2"></i>Logout
+                            </button>
+                        </form>
+                    </div>
             </nav>
         </div>

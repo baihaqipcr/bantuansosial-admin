@@ -13,7 +13,7 @@ use App\Http\Controllers\PendaftarController;
 
 Route::get('/', function () {
     Auth::check();
-    return redirect('/home');
+    return redirect('/login');
 })->name('login');
 
 Route::get('/bansos', [BansosController::class, 'index'])->name('bansos.index');
