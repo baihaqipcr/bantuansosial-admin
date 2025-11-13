@@ -20,22 +20,22 @@
                     <div class="navbar-nav w-100">
                         <a href="{{ route('dashboard') }}"
                             class="nav-item nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
-                            <i class="#"></i>Dashboard
+                            <i class="fa fa-tachometer-alt me-2"></i>Dashboard
                         </a>
 
                         <a href="{{ route('penerima.index') }}"
                             class="nav-item nav-link {{ request()->routeIs('penerima.*') ? 'active' : '' }}">
-                            <i class="#"></i>Data Penerima
+                            <i class="fa fa-users me-2"></i>Data Penerima
                         </a>
 
                         <a href="{{ route('program.index') }}"
                             class="nav-item nav-link {{ request()->routeIs('program.*') ? 'active' : '' }}">
-                            <i class="#"></i>Program Bantuan
+                            <i class="fa fa-users me-2"></i>Program Bantuan
                         </a>
 
                         <a href="{{ route('pendaftar.index') }}"
                             class="nav-item nav-link {{ request()->routeIs('pendaftar.*') ? 'active' : '' }}">
-                            <i class="#"></i>Pendaftar
+                            <i class="fa fa-box me-2"></i>Pendaftar
                         </a>
                     </div>
                     <div>
