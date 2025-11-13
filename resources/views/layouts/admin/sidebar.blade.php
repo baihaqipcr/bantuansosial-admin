@@ -20,31 +20,23 @@
                     <div class="navbar-nav w-100">
                         <a href="{{ route('dashboard') }}"
                             class="nav-item nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
-                            <i class="fa fa-tachometer-alt me-2"></i>Dashboard
+                            <i class="#"></i>Dashboard
                         </a>
 
                         <a href="{{ route('penerima.index') }}"
                             class="nav-item nav-link {{ request()->routeIs('penerima.*') ? 'active' : '' }}">
-                            <i class="fa fa-users me-2"></i>Data Penerima
+                            <i class="#"></i>Data Penerima
                         </a>
 
                         <a href="{{ route('program.index') }}"
                             class="nav-item nav-link {{ request()->routeIs('program.*') ? 'active' : '' }}">
-                            <i class="fa fa-list me-2"></i>Program Bantuan
+                            <i class="#"></i>Program Bantuan
                         </a>
 
                         <a href="{{ route('pendaftar.index') }}"
                             class="nav-item nav-link {{ request()->routeIs('pendaftar.*') ? 'active' : '' }}">
-                            <i class="fa fa-box me-2"></i>Pendaftar
+                            <i class="#"></i>Pendaftar
                         </a>
-                    </div>
-                    <div>
-                        <form action="{{ route('logout') }}" method="POST" class="mt-auto text-center">
-                            @csrf
-                            <button type="submit" class="btn btn-danger w-75 logout-btn mt-3">
-                                <i class="fa fa-sign-out-alt me-2"></i>Logout
-                            </button>
-                        </form>
                     </div>
             </nav>
         </div>

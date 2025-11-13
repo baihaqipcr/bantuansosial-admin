@@ -155,10 +155,6 @@
         </div>
         <!-- Content End -->
 
-        <!-- Floating WA -->
-        @include('layouts.admin.floatingwa')
-        <!-- End Floating WA -->
-
         <!-- Back to Top -->
         @include('layouts.admin.btt')
 

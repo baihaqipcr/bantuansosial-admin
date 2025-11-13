@@ -63,9 +63,7 @@
         <!-- Back to Top -->
         @include('layouts.admin.btt')
 
-        <!-- Floating WA -->
-        @include('layouts.admin.floatingwa')
-        <!-- End Floating WA -->
+      
 
         <!-- JavaScript Libraries -->
         @include('layouts.admin.js')
