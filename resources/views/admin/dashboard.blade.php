@@ -152,6 +152,11 @@
             <!-- Footer Start -->
             @include('layouts.admin.footer')
             <!-- Footer End -->
+
+            <!-- Floating WA -->
+            @include('layouts.admin.floatingwa')
+            <!-- End Floating WA -->
+
         </div>
         <!-- Content End -->
 

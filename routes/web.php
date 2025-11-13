@@ -16,6 +16,11 @@ Route::get('/', function () {
     return redirect('/login');
 })->name('login');
 
+Route::post('/logout', function () {
+    Auth::logout();
+    return redirect('/login');
+})->name('logout');
+
 Route::get('/bansos', [BansosController::class, 'index'])->name('bansos.index');
 
 Route::get('/auth', [AuthController::class, 'showLoginForm']);
