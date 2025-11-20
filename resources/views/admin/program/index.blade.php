@@ -39,7 +39,7 @@
                         <table id="table-program" class="table table-dark-custom table-hover table-bordered mb-0 rounded">
                             <thead>
                                 <tr>
-                                    <th class="border-0">ID Program</th>
+                                    <th class="border-0">Id program</th>
                                     <th class="border-0">Kode Program</th>
                                     <th class="border-0">Nama Program</th>
                                     <th class="border-0">Tahun</th>

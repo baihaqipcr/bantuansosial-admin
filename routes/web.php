@@ -47,4 +47,7 @@ Route::resource('pendaftar', PendaftarController::class);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+Route::get('/checkdb', function () {
+    return DB::connection()->getDatabaseName();
+});
 
