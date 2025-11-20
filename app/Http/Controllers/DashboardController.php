@@ -14,12 +14,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-
-        $penerima = Penerima::count();
-        $pendaftar = Pendaftar::count();
-        $program   = ProgramBantuan::count();
-
-        return view('admin.dashboard', compact('penerima', 'pendaftar', 'program'));
+        //
     }
 
     /**
