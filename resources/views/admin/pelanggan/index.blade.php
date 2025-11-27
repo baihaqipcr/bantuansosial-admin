@@ -40,8 +40,8 @@
                             <div class="col-md-2">
                                 <select name="kelamin" class="form-select" onchange="this.form.submit()">
                                     <option value="">All</option>
-                                    <option value="Male" {{ request('kelamin')=='Male' ? 'selected' : '' }}>Male</option>
-                                    <option value="Female" {{ request('kelamin')=='Female' ? 'selected' : '' }}>Female</option>
+                                    <option value="Male" {{ request('kelamin')=='Male' ? 'selected' : '' }}>Laki-laki</option>
+                                    <option value="Female" {{ request('kelamin')=='Female' ? 'selected' : '' }}>Perempuan</option>
                                 </select>
                             </div>
                             <div class="col-md-3">
