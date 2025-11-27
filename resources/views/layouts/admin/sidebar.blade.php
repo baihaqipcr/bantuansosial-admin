@@ -23,6 +23,11 @@
                             <i class="fa fa-tachometer-alt me-2"></i>Dashboard
                         </a>
 
+                        <a href="{{ route('pelanggan.index') }}"
+                            class="nav-item nav-link {{ request()->routeIs('pelanggan.*') ? 'active' : '' }}">
+                            <i class="fa fa-users me-2"></i>Data Pelanggan
+                        </a>
+
                         <a href="{{ route('penerima.index') }}"
                             class="nav-item nav-link {{ request()->routeIs('penerima.*') ? 'active' : '' }}">
                             <i class="fa fa-users me-2"></i>Data Penerima

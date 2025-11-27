@@ -2,18 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Pelanggan;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class PelangganController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data['dataPelanggan'] = Pelanggan::all();
-		return view('admin.pelanggan.index',$data);
+        $filterableColumns = ['kelamin'];
+
+        $searchableColumns = ['nama_awal_penerima', 'nama_akhir_penerima', 'kelamin', 'email', 'no_tlp'];
+
+        $data['dataPelanggan'] = Pelanggan::filter($request, $filterableColumns)
+        ->search($request, $searchableColumns)
+        ->paginate(5)->onEachSide(2);
+        return view('admin.pelanggan.index', $data);
     }
 
     /**
@@ -29,7 +36,7 @@ class PelangganController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
+        // dd($request->all());
 
         $data['nama_awal_penerima'] = $request->nama_awal_penerima;
 		$data['nama_akhir_penerima'] = $request->nama_akhir_penerima;
@@ -68,8 +75,8 @@ class PelangganController extends Controller
          $pelanggan_id = $id;
         $pelanggan    = Pelanggan::findOrFail($pelanggan_id);
 
-        $pelanggan->nama_awal_penerima = $request->nama_awal_pelanggan;
-        $pelanggan->nama_akhir_penerima  = $request->nama_akhir_pelanggan;
+        $pelanggan->nama_awal_pelanggan = $request->nama_awal_pelanggan;
+        $pelanggan->nama_akhir_pelanggan  = $request->nama_akhir_pelanggan;
         $pelanggan->tgl_lahir   = $request->tgl_lahir;
         $pelanggan->kelamin     = $request->kelamin;
         $pelanggan->email      = $request->email;
