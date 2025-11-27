@@ -10,6 +10,7 @@ use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\PenerimaController;
 use App\Http\Controllers\ProgramBantuanController;
 use App\Http\Controllers\PendaftarController;
+use Illuminate\Container\Attributes\Auth;
 
 Route::get('/', function () {
     Auth::check();
@@ -47,7 +48,4 @@ Route::resource('pendaftar', PendaftarController::class);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-Route::get('/checkdb', function () {
-    return DB::connection()->getDatabaseName();
-});
 

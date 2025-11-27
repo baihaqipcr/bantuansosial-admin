@@ -11,7 +11,7 @@ class AuthController extends Controller
      */
     public function showLoginForm()
     {
-         return view('admin.login-form');
+        return view('admin.login-form');
     }
 
     /**
@@ -27,14 +27,13 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
-        {
-        // Validasi input dengan pesan bahasa Indonesia
+        // Validasi input
         $request->validate([
             'username' => 'required',
             'password' => [
                 'required',
                 'min:3',
-                'regex:/[A-Z]/' // harus ada minimal satu huruf kapital
+                'regex:/[A-Z]/'
             ],
         ], [
             'username.required' => 'Username wajib diisi.',
@@ -43,11 +42,10 @@ class AuthController extends Controller
             'password.regex' => 'Password harus mengandung minimal satu huruf kapital.',
         ]);
 
-        // Contoh logika login sederhana
+        // Logika login sederhana
         $username = $request->username;
     }
 
-    }
 
     /**
      * Display the specified resource.
