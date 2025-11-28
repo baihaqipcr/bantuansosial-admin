@@ -13,7 +13,7 @@ class PenerimaController extends Controller
      */
     public function index()
     {
-         $data['dataPenerima'] = Penerima::all();
+         $data['dataPenerima'] = Penerima::paginate(10);
         return view('admin.penerima.index', $data);
     }
 

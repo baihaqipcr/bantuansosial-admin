@@ -26,8 +26,10 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{ asset('assets-admin/css/bootstrap.min.css') }}" rel="stylesheet">
 
-    <!-- Template Stylesheet -->
+    <!-- style css -->
     <link href="{{ asset('assets-admin/css/style.css') }}" rel="stylesheet">
+    <!-- end style css -->
+
 </head>
 
 <body>

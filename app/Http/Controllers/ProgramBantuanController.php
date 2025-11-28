@@ -13,7 +13,7 @@ class ProgramBantuanController extends Controller
      */
     public function index()
     {
-        $data['dataProgram'] = ProgramBantuan::all();
+        $data['dataProgram'] = ProgramBantuan::paginate(10);
         return view('admin.program.index', $data);
     }
 

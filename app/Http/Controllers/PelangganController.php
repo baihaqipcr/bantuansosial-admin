@@ -75,12 +75,13 @@ class PelangganController extends Controller
          $pelanggan_id = $id;
         $pelanggan    = Pelanggan::findOrFail($pelanggan_id);
 
-        $pelanggan->nama_awal_pelanggan = $request->nama_awal_pelanggan;
-        $pelanggan->nama_akhir_pelanggan  = $request->nama_akhir_pelanggan;
+        $pelanggan->nama_awal_penerima = $request->nama_awal_penerima;
+        $pelanggan->nama_akhir_penerima  = $request->nama_akhir_penerima;
         $pelanggan->tgl_lahir   = $request->tgl_lahir;
         $pelanggan->kelamin     = $request->kelamin;
         $pelanggan->email      = $request->email;
         $pelanggan->no_tlp      = $request->no_tlp;
+        
 
         $pelanggan->save();
         return redirect()->route('pelanggan.index')->with('success', 'Perubahan Data Berhasil');

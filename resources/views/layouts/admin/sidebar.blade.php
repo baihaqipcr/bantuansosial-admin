@@ -42,7 +42,6 @@
                             class="nav-item nav-link {{ request()->routeIs('pendaftar.*') ? 'active' : '' }}">
                             <i class="fa fa-box me-2"></i>Pendaftar
                         </a>
-                    </div>
                     <div>
                         <form action="{{ route('logout') }}" method="POST" class="mt-auto text-center">
                             @csrf

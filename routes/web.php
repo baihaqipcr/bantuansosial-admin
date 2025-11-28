@@ -10,17 +10,25 @@ use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\PenerimaController;
 use App\Http\Controllers\ProgramBantuanController;
 use App\Http\Controllers\PendaftarController;
+use App\Http\Controllers\MultipleuploadsController;
 use Illuminate\Container\Attributes\Auth;
 
-Route::get('/', function () {
-    Auth::check();
-    return redirect('/login');
-})->name('login');
+// Halaman login
+Route::get('/login', function () {
+    return view('auth.login');
+})->name('login')->middleware('guest');
 
+// Redirect root ke login jika belum login
+Route::get('/', function () {
+    return redirect()->route('login');
+});
+
+// Logout
 Route::post('/logout', function () {
     Auth::logout();
-    return redirect('/login');
-})->name('logout');
+    return redirect()->route('login');
+})->middleware('auth')->name('logout');
+
 
 Route::get('/bansos', [BansosController::class, 'index'])->name('bansos.index');
 
@@ -47,5 +55,9 @@ Route::resource('program', ProgramBantuanController::class);
 Route::resource('pendaftar', PendaftarController::class);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+Route::get('/multipleuploads', 'MultipleuploadsController@index')->name('uploads');
+
+Route::post('/save','MultipleuploadsController@store')->name('uploads.store');
 
 

@@ -12,7 +12,7 @@ class PendaftarController extends Controller
      */
     public function index()
     {
-        $data['dataPendaftar'] = Pendaftar::all();
+        $data['dataPendaftar'] = Pendaftar::paginate(10);
         return view('admin.pendaftar.index', $data);
     }
 
