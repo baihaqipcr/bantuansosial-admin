@@ -67,6 +67,7 @@
                                 <th class="border-0">Nama Akhir</th>
                                 <th class="border-0">Tanggal Lahir</th>
                                 <th class="border-0">Kelamin</th>
+                                <th class="border-0">Role</th>
                                 <th class="border-0">Email</th>
                                 <th class="border-0">No HP</th>
                                 <th class="border-0 rounded-end">Action</th>
@@ -79,6 +80,7 @@
                                 <td>{{ $item->nama_akhir_penerima }}</td>
                                 <td>{{ $item->tgl_lahir }}</td>
                                 <td>{{ $item->kelamin }}</td>
+                                <td>{{ $item->role }}</td>
                                 <td>{{ $item->email }}</td>
                                 <td>{{ $item->no_tlp }}</td>
                                 <td>

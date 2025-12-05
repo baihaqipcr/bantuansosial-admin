@@ -32,68 +32,83 @@
             <div class="card-body">
                 <form action="{{ route('pelanggan.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <div class="row mb-4">
-                        <div class="col-lg-4 col-sm-6">
 
-                            <!-- First Name -->
+                    <div class="row mb-4">
+
+                        <!-- ================= KOLOM 1 ================= -->
+                        <div class="col-lg-4 col-md-6">
+
                             <div class="mb-3">
                                 <label for="nama_awal_penerima" class="form-label">Nama Awal</label>
-                                <input type="text" name="nama_awal_penerima" id="nama_awal_penerima" class="form-control" required>
+                                <input type="text" name="nama_awal_penerima" class="form-control" required>
                             </div>
 
-                            <!-- Last Name -->
                             <div class="mb-3">
                                 <label for="nama_akhir_penerima" class="form-label">Nama Terakhir</label>
-                                <input type="text" name="nama_akhir_penerima" id="nama_akhir_penerima" class="form-control">
+                                <input type="text" name="nama_akhir_penerima" class="form-control">
                             </div>
-                        </div>
 
-                        <div class="col-lg-4 col-sm-6">
-                            <!-- Birthday -->
                             <div class="mb-3">
                                 <label for="tgl_lahir" class="form-label">Ulang Tahun</label>
-                                <input type="date" name="tgl_lahir" id="tgl_lahir" class="form-control">
+                                <input type="date" name="tgl_lahir" class="form-control">
                             </div>
 
-                            <!-- Gender -->
+                        </div>
+
+                        <!-- ================= KOLOM 2 ================= -->
+                        <div class="col-lg-4 col-md-6">
+
                             <div class="mb-3">
                                 <label for="kelamin" class="form-label">Kelamin</label>
-                                <select id="kelamin" name="kelamin" class="form-select">
+                                <select name="kelamin" class="form-select">
                                     <option selected disabled>Pilih Gender</option>
                                     <option value="Laki-laki">Laki-laki</option>
                                     <option value="Perempuan">Perempuan</option>
                                     <option value="Other">Other</option>
                                 </select>
                             </div>
+
+                            <div class="mb-3">
+                                <label for="role" class="form-label">Role</label>
+                                <select name="role" class="form-select">
+                                    <option selected disabled>Pilih Role</option>
+                                    <option value="Administrator">Administrator</option>
+                                    <option value="Member">Member</option>
+                                    <option value="Mitra">Mitra</option>
+                                </select>
+                            </div>
+
                         </div>
 
-                        <div class="col-lg-4 col-sm-12">
-                            <!-- Email -->
+                        <!-- ================= KOLOM 3 ================= -->
+                        <div class="col-lg-4 col-md-12">
+
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="text" name="email" id="email" class="form-control">
+                                <input type="email" name="email" class="form-control">
                             </div>
 
-                            <!-- Phone -->
                             <div class="mb-3">
                                 <label for="no_tlp" class="form-label">Nomor Kontak</label>
-                                <input type="text" name="no_tlp" id="no_tlp" class="form-control">
+                                <input type="text" name="no_tlp" class="form-control">
                             </div>
 
-                            <!-- Foto Profil -->
                             <div class="mb-3">
                                 <label for="foto_profil" class="form-label">Foto Profil</label>
-                                <input type="file" name="foto_profil" id="foto_profil" class="form-control">
-                                <small class="text-muted">Unggah foto (JPG/PNG, max 2MB)</small>
+                                <input type="file" name="foto_profil" class="form-control">
+                                <small class="text-muted">JPG / PNG, max 2MB</small>
                             </div>
 
-                            <!-- Buttons -->
-                            <div class="">
-                                <button type="submit" class="btn btn-primary">Simpan</button>
-                                <a href="{{ route('pelanggan.index') }}" class="btn btn-outline-secondary ms-2">Batal</a>
-                            </div>
                         </div>
+
                     </div>
+
+                    <!-- ================= BUTTON ================= -->
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" class="btn btn-primary px-4">Simpan</button>
+                        <a href="{{ route('pelanggan.index') }}" class="btn btn-outline-secondary ms-2 px-4">Batal</a>
+                    </div>
+
                 </form>
 
             </div>

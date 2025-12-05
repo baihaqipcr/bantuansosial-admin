@@ -30,76 +30,129 @@
     <div class="col-12 mb-4">
         <div class="card border-0 shadow mb-4 card-dark-surface">
             <div class="card-body">
-                <form action="{{ route('pelanggan.update', $dataPelanggan->pelanggan_id) }}" method="POST">
+                <form action="{{ route('pelanggan.update', $dataPelanggan->pelanggan_id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
-                    <div class="row mb-4">
-                        <div class="col-lg-4 col-sm-6">
-                            <!-- First Name -->
+
+                    <div class="row g-4">
+
+                        <!-- KOLOM 1 -->
+                        <div class="col-lg-4 col-md-6">
                             <div class="mb-3">
                                 <label for="nama_awal_penerima" class="form-label">Nama Awal</label>
-                                <input type="text" name="nama_awal_penerima" id="nama_awal_penerima" class="form-control"
-                                    value="{{ $dataPelanggan->nama_awal_penerima}}" required>
+                                <input type="text"
+                                    name="nama_awal_penerima"
+                                    id="nama_awal_penerima"
+                                    class="form-control @error('nama_awal_penerima') is-invalid @enderror"
+                                    value="{{ old('nama_awal_penerima', $dataPelanggan->nama_awal_penerima) }}"
+                                    required>
+                                @error('nama_awal_penerima')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
 
-                            <!-- Last Name -->
                             <div class="mb-3">
                                 <label for="nama_akhir_penerima" class="form-label">Nama Terakhir</label>
-                                <input type="text" name="nama_akhir_penerima" id="nama_akhir_penerima" class="form-control"
-                                    value="{{ $dataPelanggan->nama_akhir_penerima }}">
+                                <input type="text"
+                                    name="nama_akhir_penerima"
+                                    id="nama_akhir_penerima"
+                                    class="form-control @error('nama_akhir_penerima') is-invalid @enderror"
+                                    value="{{ old('nama_akhir_penerima', $dataPelanggan->nama_akhir_penerima) }}">
+                                @error('nama_akhir_penerima')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
 
-                        <div class="col-lg-4 col-sm-6">
-                            <!-- Birthday -->
+
+                        <!-- KOLOM 2 -->
+                        <div class="col-lg-4 col-md-6">
                             <div class="mb-3">
-                                <label for="birthday" class="form-label">Ulang Tahun</label>
-                                <input type="date" name="birthday" id="birthday" class="form-control"
-                                    value="{{ $dataPelanggan->birthday }}">
+                                <label for="tgl_lahir" class="form-label">Ulang Tahun</label>
+                                <input type="date"
+                                    name="tgl_lahir"
+                                    id="tgl_lahir"
+                                    class="form-control @error('tgl_lahir') is-invalid @enderror"
+                                    value="{{ old('tgl_lahir', $dataPelanggan->tgl_lahir ? date('Y-m-d', strtotime($dataPelanggan->tgl_lahir)) : '') }}">
+                                @error('tgl_lahir')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
 
-                            <!-- Gender -->
                             <div class="mb-3">
-                                <label for="gender" class="form-label">Kelamin</label>
-                                <select id="gender" name="gender" class="form-select">
-                                    <option selected>Gender</option>
-                                    <option value="Male" {{$dataPelanggan->gender =='Male' ? 'selected' : ''}}>Male</option>
-                                    <option value="Female" {{$dataPelanggan->gender == 'Female' ? 'selected' : ''}}>Female</option>
-                                    <option value="Other">Other</option>
+                                <label for="kelamin" class="form-label">Kelamin</label>
+                                <select id="kelamin"
+                                    name="kelamin"
+                                    class="form-select @error('kelamin') is-invalid @enderror">
+
+                                    <option value="" disabled {{ old('kelamin', $dataPelanggan->kelamin) == '' ? 'selected' : '' }}>Pilih Gender</option>
+                                    <option value="Laki-laki" {{ old('kelamin', $dataPelanggan->kelamin) == 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
+                                    <option value="Perempuan" {{ old('kelamin', $dataPelanggan->kelamin) == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
+                                    <option value="Other" {{ old('kelamin', $dataPelanggan->kelamin) == 'Other' ? 'selected' : '' }}>Other</option>
                                 </select>
+
+                                @error('kelamin')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
 
-                        <div class="col-lg-4 col-sm-12">
-                            <!-- Email -->
+
+                        <!-- KOLOM 3 -->
+                        <div class="col-lg-4 col-md-12">
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="text" name="email" id="email" class="form-control"
-                                    value="{{ $dataPelanggan->email }}" required>
+                                <input type="email"
+                                    name="email"
+                                    id="email"
+                                    class="form-control @error('email') is-invalid @enderror"
+                                    value="{{ old('email', $dataPelanggan->email) }}"
+                                    required>
+                                @error('email')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
 
-                            <!-- Phone -->
                             <div class="mb-3">
-                                <label for="phone" class="form-label">Nomor Kontak</label>
-                                <input type="text" name="phone" id="phone" class="form-control"
-                                    value="{{ $dataPelanggan->phone }}">
+                                <label for="no_tlp" class="form-label">Nomor Kontak</label>
+                                <input type="text"
+                                    name="no_tlp"
+                                    id="no_tlp"
+                                    class="form-control @error('no_tlp') is-invalid @enderror"
+                                    value="{{ old('no_tlp', $dataPelanggan->no_tlp) }}">
+                                @error('no_tlp')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
 
-                            <!-- Foto Profil -->
                             <div class="mb-3">
-                                <label for="foto_profil" class="form-label">Foto Profil</label>
-                                <input type="file" name="foto_profil" id="foto_profil" class="form-control">
-                                <small class="text-muted">Unggah foto (JPG/PNG, max 2MB)</small>
-                            </div>
+                                <label for="role" class="form-label">Role</label>
+                                <select id="role"
+                                    name="role"
+                                    class="form-select @error('role') is-invalid @enderror">
 
-                            <!-- Buttons -->
-                            <div class="">
-                                <button type="submit" class="btn btn-primary">Simpan</button>
-                                <a href="{{ route('pelanggan.index') }}" class="btn btn-outline-secondary ms-2">Batal</a>
+                                    <option value="" disabled {{ old('role', $dataPelanggan->role) == '' ? 'selected' : '' }}>Pilih Role</option>
+                                    <option value="Administrator" {{ old('role', $dataPelanggan->role) == 'Administrator' ? 'selected' : '' }}>Administrator</option>
+                                    <option value="Member" {{ old('role', $dataPelanggan->role) == 'Member' ? 'selected' : '' }}>Member</option>
+                                    <option value="Mitra" {{ old('role', $dataPelanggan->role) == 'Mitra' ? 'selected' : '' }}>Mitra</option>
+                                </select>
+
+                                @error('role')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
+
+                    </div>
+
+                    <!-- BUTTON -->
+                    <div class="d-flex justify-content-end mt-3">
+                        <button type="submit" class="btn btn-primary px-4">Simpan</button>
+                        <a href="{{ route('pelanggan.index') }}" class="btn btn-outline-secondary ms-2 px-4">Batal</a>
                     </div>
                 </form>
+
+
             </div>
 
         </div>

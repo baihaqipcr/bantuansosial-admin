@@ -42,6 +42,7 @@ class PelangganController extends Controller
 		$data['nama_akhir_penerima'] = $request->nama_akhir_penerima;
 		$data['tgl_lahir'] = $request->tgl_lahir;
 		$data['kelamin'] = $request->kelamin;
+		$data['role'] = $request->role;
 		$data['email'] = $request->email;
 		$data['no_tlp'] = $request->no_tlp;
 		
@@ -79,6 +80,7 @@ class PelangganController extends Controller
         $pelanggan->nama_akhir_penerima  = $request->nama_akhir_penerima;
         $pelanggan->tgl_lahir   = $request->tgl_lahir;
         $pelanggan->kelamin     = $request->kelamin;
+        $pelanggan->role     = $request->role;
         $pelanggan->email      = $request->email;
         $pelanggan->no_tlp      = $request->no_tlp;
         

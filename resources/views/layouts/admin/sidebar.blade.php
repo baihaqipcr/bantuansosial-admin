@@ -12,7 +12,7 @@
                         </div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">HQ</h6>
+                        <h6 class="mb-0">Baihaqi</h6>
                         <span>I brought peace</span>
                     </div>
                 </div>

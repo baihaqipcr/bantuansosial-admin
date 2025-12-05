@@ -16,7 +16,7 @@ use Illuminate\Container\Attributes\Auth;
 // Halaman login
 Route::get('/login', function () {
     return view('auth.login');
-})->name('login')->middleware('guest');
+})->name('login');
 
 // Redirect root ke login jika belum login
 Route::get('/', function () {
@@ -27,14 +27,15 @@ Route::get('/', function () {
 Route::post('/logout', function () {
     Auth::logout();
     return redirect()->route('login');
-})->middleware('auth')->name('logout');
+})->name('logout');
 
 
 Route::get('/bansos', [BansosController::class, 'index'])->name('bansos.index');
 
 Route::get('/auth', [AuthController::class, 'showLoginForm']);
 
-Route::post('login', [AuthController::class, 'login'])->name('login.post');
+Route::post('login', [AuthController::class, 'login'])
+    ->name('login.post');
 
 Route::get('/home', [HomeController::class, 'index']);
 
@@ -42,11 +43,12 @@ Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 
 
 Route::post('question/store', [QuestionController::class, 'store'])
-		->name('question.store');
+    ->name('question.store');
 
 Route::resource('pelanggan', PelangganController::class);
 
-Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('dashboard', [DashboardController::class, 'index'])
+    ->name('dashboard');
 
 Route::resource('penerima', PenerimaController::class);
 
@@ -54,10 +56,7 @@ Route::resource('program', ProgramBantuanController::class);
 
 Route::resource('pendaftar', PendaftarController::class);
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::get('/multipleuploads', 'MultipleuploadsController@index')->name('uploads');
 
-Route::post('/save','MultipleuploadsController@store')->name('uploads.store');
-
-
+Route::post('/save', 'MultipleuploadsController@store')->name('uploads.store');
