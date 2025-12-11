@@ -12,6 +12,7 @@ use App\Http\Controllers\ProgramBantuanController;
 use App\Http\Controllers\PendaftarController;
 use App\Http\Controllers\MultipleuploadsController;
 use Illuminate\Container\Attributes\Auth;
+use App\Http\Controllers\BeritaController;
 
 // Halaman login
 Route::get('/login', function () {
@@ -60,3 +61,16 @@ Route::resource('pendaftar', PendaftarController::class);
 Route::get('/multipleuploads', 'MultipleuploadsController@index')->name('uploads');
 
 Route::post('/save', 'MultipleuploadsController@store')->name('uploads.store');
+
+Route::resource('berita', App\Http\Controllers\BeritaController::class);
+
+// MEDIA untuk BERITA
+Route::post(
+    '/berita/{id}/media/upload',
+    [App\Http\Controllers\MediaController::class, 'uploadBerita']
+)->name('berita.media.upload');
+
+Route::delete(
+    '/media/{media_id}',
+    [App\Http\Controllers\MediaController::class, 'destroy']
+)->name('media.delete');
