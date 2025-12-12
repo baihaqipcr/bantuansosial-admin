@@ -53,7 +53,7 @@
 
             width: 700px;
             max-width: 95%;
-            height: auto;
+            height: 700px;
             padding: 50px 30px;
 
             border-radius: 20px;
@@ -316,8 +316,11 @@
             <div class="login-content">
                 <h2 class="login-title">Selamat Datang di Bantuan Sosial dan Pemanfaatan</h2>
                 <p class="login-subtitle">Silakan masuk ke akun Anda</p>
-                <form action="{{ route('register.post') }}" method="POST">
+                <form action="{{ route('register.post') }}"
+                    method="POST"
+                    enctype="multipart/form-data">
                     @csrf
+
                     <label>Username</label>
                     <input type="text" name="username" required>
 
@@ -329,6 +332,9 @@
 
                     <label>Konfirmasi Password</label>
                     <input type="password" name="password_confirmation" required>
+
+                    <label for="foto_profil" class="form-label">Foto Profil</label>
+                    <input type="file" name="foto_profil" id="foto_profil">
 
                     <button type="submit">Daftar</button>
                 </form>

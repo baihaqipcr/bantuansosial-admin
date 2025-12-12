@@ -5,15 +5,17 @@
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
-                        <img class="rounded-circle" src="{{ asset('assets-admin/img/anakin.jpg') }}" alt=""
-                            style="width: 40px; height: 40px;">
+                        <img class="rounded-circle me-lg-2"
+                            src="{{ Auth::user()->foto_profil ? asset('storage/' . Auth::user()->foto_profil) : asset('assets-admin/img/default.png') }}"
+                            alt="foto_profil" style="width:40px; height:40px; object-fit:cover;">
                         <div
                             class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
                         </div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">Baihaqi</h6>
-                        <span>I brought peace</span>
+                        <span class="d-none d-lg-inline-flex">
+                            {{ Auth::user()->username}}
+                        </span>
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
@@ -42,13 +44,13 @@
                             class="nav-item nav-link {{ request()->routeIs('pendaftar.*') ? 'active' : '' }}">
                             <i class="fa fa-box me-2"></i>Pendaftar
                         </a>
-                    <div>
-                        <form action="{{ route('logout') }}" method="POST" class="mt-auto text-center">
-                            @csrf
-                            <button type="submit" class="btn btn-danger w-75 logout-btn mt-3">
-                                <i class="fa fa-sign-out-alt me-2"></i>Logout
-                            </button>
-                        </form>
-                    </div>
+                        <div>
+                            <form action="{{ route('logout') }}" method="POST" class="mt-auto text-center">
+                                @csrf
+                                <button type="submit" class="btn btn-danger w-75 logout-btn mt-3">
+                                    <i class="fa fa-sign-out-alt me-2"></i>Logout
+                                </button>
+                            </form>
+                        </div>
             </nav>
         </div>

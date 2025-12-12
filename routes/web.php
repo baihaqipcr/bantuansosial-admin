@@ -15,65 +15,64 @@ use App\Http\Controllers\ProgramBantuanController;
 use App\Http\Controllers\MultipleuploadsController;
 
 
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 
-Route::post('/login', [AuthController::class, 'login'])->name('login.post');
+Route::middleware('guest')->group(function () {
 
+    Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [AuthController::class, 'login'])->name('login.post');
+
+    Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
+    Route::post('/register', [AuthController::class, 'register'])->name('register.post');
+
+});
 
 Route::get('/', function () {
     return redirect()->route('login');
 });
 
+Route::middleware('auth')->group(function () {
+
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::get('/bansos', [BansosController::class, 'index'])->name('bansos.index');
+
+    Route::get('/home', [HomeController::class, 'index']);
+
+    Route::resource('pelanggan', PelangganController::class);
+    Route::resource('penerima', PenerimaController::class);
+    Route::resource('program', ProgramBantuanController::class);
+    Route::resource('pendaftar', PendaftarController::class);
+
+    Route::resource('berita', App\Http\Controllers\BeritaController::class);
+
+    Route::post(
+        '/berita/{id}/media/upload',
+        [App\Http\Controllers\MediaController::class, 'uploadBerita']
+    )->name('berita.media.upload');
+
+    Route::delete(
+        '/media/{media_id}',
+        [App\Http\Controllers\MediaController::class, 'destroy']
+    )->name('media.delete');
+
+    // Multiple uploads
+    Route::get('/multipleuploads', 'MultipleuploadsController@index')->name('uploads');
+    Route::post('/save', 'MultipleuploadsController@store')->name('uploads.store');
+
+    // Question
+    Route::post('question/store', [QuestionController::class, 'store'])
+        ->name('question.store');
+});
+
 Route::post('/logout', function () {
     Auth::logout();
+    request()->session()->invalidate();
+    request()->session()->regenerateToken();
     return redirect()->route('login');
-})->name('logout');
+})->middleware('auth')->name('logout');
 
 
-Route::get('/bansos', [BansosController::class, 'index'])->name('bansos.index');
 
-Route::get('/auth', [AuthController::class, 'showLoginForm']);
-
-Route::post('login', [AuthController::class, 'login'])
-    ->name('login.post');
-
-Route::get('/home', [HomeController::class, 'index']);
-
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-
-
-Route::post('question/store', [QuestionController::class, 'store'])
-    ->name('question.store');
-
-Route::resource('pelanggan', PelangganController::class);
-
-Route::get('dashboard', [DashboardController::class, 'index'])
-    ->name('dashboard');
-
-Route::resource('penerima', PenerimaController::class);
-
-Route::resource('program', ProgramBantuanController::class);
-
-Route::resource('pendaftar', PendaftarController::class);
-
-
-Route::get('/multipleuploads', 'MultipleuploadsController@index')->name('uploads');
-
-Route::post('/save', 'MultipleuploadsController@store')->name('uploads.store');
-
-Route::resource('berita', App\Http\Controllers\BeritaController::class);
-
-Route::post(
-    '/berita/{id}/media/upload',
-    [App\Http\Controllers\MediaController::class, 'uploadBerita']
-)->name('berita.media.upload');
-
-Route::delete(
-    '/media/{media_id}',
-    [App\Http\Controllers\MediaController::class, 'destroy']
-)->name('media.delete');
-
-Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
-
-Route::post('/register', [AuthController::class, 'register'])->name('register.post');
-
+Route::get('/cek-user', function () {
+    return Auth::user();
+});

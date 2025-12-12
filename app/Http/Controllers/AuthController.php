@@ -31,17 +31,23 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $request->validate([
-            'username' => 'required|unique:users,username',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:6|confirmed'
+            'username' => 'required|unique:users',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6|confirmed',
+            'foto_profil' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
-        // Simpan user
+        $fotoPath = null;
+
+        if ($request->hasFile('foto_profil')) {
+            $fotoPath = $request->file('foto_profil')->store('foto_profil', 'public');
+        }
+
         User::create([
             'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            // 'nama_lengkap' => $request->nama_lengkap,  ← kalau kamu pakai
+            'foto_profil' => $fotoPath,
         ]);
 
         return redirect()->route('login')->with('success', 'Registrasi berhasil! Silakan login.');
@@ -73,11 +79,21 @@ class AuthController extends Controller
             ]);
         }
 
+
+
+
+
         // Login manual (tanpa Auth::attempt)
         Auth::login($users);
         $request->session()->regenerate();
 
         return redirect()->route('dashboard');
+    }
+
+    public function profile()
+    {
+        $user = Auth::user(); // user yang sedang login
+        return view('dashboard.profile', compact('user'));
     }
 
     // ===========================

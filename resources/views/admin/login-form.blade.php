@@ -60,7 +60,7 @@
 
             /* GLASS EFFECT */
             background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(15px);
+            backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(15px);
 
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -276,6 +276,30 @@
             box-shadow: 0 0 5px rgba(255, 75, 43, 0.4);
         }
 
+        .btn-full {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            padding: 12px 45px;
+            background-color: #FF4B2B;
+            color: #fff;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 15px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-full:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(255, 75, 43, 0.3);
+        }
+
+
         button {
             border-radius: 25px;
             border: none;
@@ -347,9 +371,10 @@
                     @enderror
 
                     <button type="submit">Masuk</button>
-                    <div class="register-btn">
-                        <a href="{{ route('register') }}" class="register-btn">Daftar Akun</a>
-                    </div>
+                    <p class="login-subtitle"> Belum punya akun? Silakan Daftar </p>
+
+                    <a href="{{ route('register') }}" class="register-btn">Daftar Akun</a>
+
                 </form>
             </div>
         </div>
