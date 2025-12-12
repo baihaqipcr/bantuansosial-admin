@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,47 +12,214 @@
         }
 
         body {
-            background: linear-gradient(to right, #191C24, #EB1616);
+            background: url(https://img.antarafoto.com/cache/1200x799/2023/09/26/gerakan-pasar-murah-dan-bantuan-sosial-di-semarang-18azo-dom.jpg) no-repeat center center fixed;
+            background-size: cover;
             display: flex;
             justify-content: center;
             align-items: center;
             font-family: 'Montserrat', sans-serif;
             height: 100vh;
             margin: 0;
+            position: relative;
+            overflow: hidden;
         }
+
+        /* OVERLAY GRADIENT GELAP → TERANG */
+        body::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right,
+                    rgba(0, 0, 0, 0.65),
+                    rgba(0, 0, 0, 0.25),
+                    rgba(255, 255, 255, 0.1));
+            backdrop-filter: blur(4px);
+        }
+
+
+        /* Agar konten tetap muncul di atas */
+        * {
+            position: relative;
+            z-index: 2;
+        }
+
 
         .login-container {
+            position: relative;
             display: flex;
-            width: 850px;
-            max-width: 95%;
-            height: 520px;
-            background-color: #fff;
-            border-radius: 15px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-            animation: fadeIn 0.8s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .login-image {
-            flex: 4;
-            background: url('https://www.klampok.id/wp-content/uploads/2020/05/bantuan-sosial.png') no-repeat center center;
-            background-size: cover;
-        }
-
-        .login-form {
-            flex: 2;
-            padding: 50px;
-            display: flex;
-            flex-direction: column;
             justify-content: center;
-            text-align: center;
-            background-color: #f6f5f7;
+            align-items: center;
+            flex-direction: column;
+
+            width: 700px;
+            max-width: 95%;
+            height: auto;
+            padding: 50px 30px;
+
+            border-radius: 20px;
+
+            /* GLASS EFFECT */
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+
+            overflow: hidden;
+            animation: fadeUp 1s ease-out;
         }
+
+        .login-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            width: 100%;
+            padding: 40px;
+        }
+
+        /* Box gambar kanan */
+        .login-side-image {
+            width: 450px;
+            height: 600px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+            animation: fadeUp 1.2s ease-out;
+        }
+
+        .login-side-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .login-container::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 3px;
+
+            background: linear-gradient(135deg,
+                    rgba(0, 153, 255, 0.5),
+                    rgba(255, 0, 153, 0.5),
+                    rgba(0, 255, 153, 0.5));
+
+            -webkit-mask:
+                linear-gradient(#fff 0 0) content-box,
+                linear-gradient(#fff 0 0);
+            mask:
+                linear-gradient(#fff 0 0) content-box,
+                linear-gradient(#fff 0 0);
+
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+
+            animation: borderGlow 5s linear infinite;
+            pointer-events: none;
+        }
+
+        /* Konten supaya rapi */
+        .login-content {
+            z-index: 2;
+            width: 80%;
+            /* lebih ideal */
+            max-width: 500px;
+            /* supaya tidak melebar */
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* Judul besar */
+        .login-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #ff512f;
+            line-height: 1.3;
+            margin-bottom: 10px;
+
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Subjudul */
+        .login-subtitle {
+            font-size: 14px;
+            color: #eee;
+            margin-bottom: 30px;
+        }
+
+        /* Label input */
+        .login-label {
+            display: block;
+            text-align: left;
+            color: #f2f2f2;
+            font-weight: 500;
+            margin-bottom: 5px;
+            margin-top: 15px;
+        }
+
+        /* Input box */
+        .login-input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            background: rgba(255, 255, 255, 0.15);
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        /* Tombol */
+        .login-btn {
+            margin-top: 20px;
+            background: #ff542e;
+            border: none;
+            padding: 12px 35px;
+            border-radius: 25px;
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .login-btn:hover {
+            background: #ff693b;
+            box-shadow: 0 0 15px rgba(255, 80, 50, 0.6);
+        }
+
+
+
+
+
+        /* Fade up animation */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.97);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Animated gradient border */
+        @keyframes borderGlow {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
 
         h1 {
             font-weight: 800;
@@ -61,13 +229,13 @@
 
         p {
             font-size: 14px;
-            color: #555;
+            color: #ffffff;
             margin-bottom: 30px;
         }
 
         label {
             font-size: 13px;
-            color: #333;
+            color: #ffffff;
             display: block;
             text-align: left;
             margin-top: 15px;
@@ -78,14 +246,14 @@
             width: 100%;
             padding: 12px 15px;
             border: none;
-            background-color: #eee;
+            background-color: rgba(255, 255, 255, 0.15);
             border-radius: 8px;
             font-size: 14px;
             transition: 0.3s;
         }
 
         input:focus {
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.322);
             outline: none;
             box-shadow: 0 0 5px rgba(255, 75, 43, 0.4);
         }
@@ -119,26 +287,6 @@
             text-align: left;
             font-size: 13px;
         }
-
-        footer {
-            position: fixed;
-            bottom: 0;
-            background-color: #222;
-            color: #fff;
-            width: 100%;
-            text-align: center;
-            font-size: 14px;
-            padding: 10px 0;
-        }
-
-        footer a {
-            color: #FF4B2B;
-            text-decoration: none;
-        }
-
-        footer i {
-            color: red;
-        }
     </style>
 </head>
 
@@ -161,30 +309,32 @@
         </div>
     @endif
 
-    <div class="login-container">
-        <div class="login-image"></div>
+    <div class="login-wrapper">
 
-        <div class="login-form">
-            <h1>Selamat Datang</h1>
-            <p>Silakan masuk ke akun Anda</p>
+        <!-- KIRI: LOGIN BOX -->
+        <div class="login-container">
+            <div class="login-content">
+                <h2 class="login-title">Selamat Datang di Bantuan Sosial dan Pemanfaatan</h2>
+                <p class="login-subtitle">Silakan masuk ke akun Anda</p>
+                <form method="GET" action="{{ route('dashboard') }}">
+                    @csrf
+                    <label for="username">Nama Admin</label>
+                    <input type="text" id="username" name="username" value="{{ old('username') }}" required>
 
-            <form method="GET" action="{{ route('dashboard') }}">
-                @csrf
+                    <label for="password">Kata Sandi</label>
+                    <input type="password" id="password" name="password" required>
 
-                <label for="username">Nama Admin</label>
-                <input type="text" id="username" name="username" value="{{ old('username') }}" required>
-
-                <label for="password">Kata Sandi</label>
-                <input type="password" id="password" name="password" required>
-
-                <button type="submit">Masuk</button>
-            </form>
+                    <button type="submit">Masuk</button>
+                </form>
+            </div>
         </div>
+        <div class="login-side-image">
+            <img src="https://tribratanews.polri.go.id/web/image/blog.post/50926/image">
+        </div>
+
     </div>
 
-    <footer>
-        <p>© 2025 <a href="#">Bantuan Sosial</a> — Dibuat dengan <i>❤</i> oleh Tim Penguasa Dunia</p>
-    </footer>
 
 </body>
+
 </html>

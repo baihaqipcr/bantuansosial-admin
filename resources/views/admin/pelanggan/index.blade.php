@@ -40,8 +40,8 @@
                             <div class="col-md-2">
                                 <select name="kelamin" class="form-select" onchange="this.form.submit()">
                                     <option value="">All</option>
-                                    <option value="Male" {{ request('kelamin')=='Male' ? 'selected' : '' }}>Laki-laki</option>
-                                    <option value="Female" {{ request('kelamin')=='Female' ? 'selected' : '' }}>Perempuan</option>
+                                    <option value="Laki-laki" {{ request('kelamin')=='Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
+                                    <option value="Perempuan" {{ request('kelamin')=='Perempuan' ? 'selected' : '' }}>Perempuan</option>
                                 </select>
                             </div>
                             <div class="col-md-3">
@@ -83,10 +83,6 @@
                                 <td>{{ $item->role }}</td>
                                 <td>{{ $item->email }}</td>
                                 <td>{{ $item->no_tlp }}</td>
-                                <td>
-                                    {{-- contoh badge --}}
-                                    <span class="badge badge-dark-contrast">{{ $item->keterangan }}</span>
-                                </td>
                                 <td>
                                     <a href="{{ route('pelanggan.edit', $item->pelanggan_id) }}"
                                         class="btn btn-info btn-sm">Edit</a>

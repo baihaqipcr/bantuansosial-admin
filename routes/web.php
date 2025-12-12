@@ -1,18 +1,18 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BansosController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\BansosController;
+use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\PenerimaController;
+use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PelangganController;
-use App\Http\Controllers\PenerimaController;
-use App\Http\Controllers\ProgramBantuanController;
 use App\Http\Controllers\PendaftarController;
+use App\Http\Controllers\ProgramBantuanController;
 use App\Http\Controllers\MultipleuploadsController;
-use Illuminate\Container\Attributes\Auth;
-use App\Http\Controllers\BeritaController;
 
 // Halaman login
 Route::get('/login', function () {
