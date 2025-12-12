@@ -14,17 +14,16 @@ use App\Http\Controllers\PendaftarController;
 use App\Http\Controllers\ProgramBantuanController;
 use App\Http\Controllers\MultipleuploadsController;
 
-// Halaman login
-Route::get('/login', function () {
-    return view('auth.login');
-})->name('login');
 
-// Redirect root ke login jika belum login
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+
+Route::post('/login', [AuthController::class, 'login'])->name('login.post');
+
+
 Route::get('/', function () {
     return redirect()->route('login');
 });
 
-// Logout
 Route::post('/logout', function () {
     Auth::logout();
     return redirect()->route('login');
@@ -64,7 +63,6 @@ Route::post('/save', 'MultipleuploadsController@store')->name('uploads.store');
 
 Route::resource('berita', App\Http\Controllers\BeritaController::class);
 
-// MEDIA untuk BERITA
 Route::post(
     '/berita/{id}/media/upload',
     [App\Http\Controllers\MediaController::class, 'uploadBerita']
@@ -74,3 +72,8 @@ Route::delete(
     '/media/{media_id}',
     [App\Http\Controllers\MediaController::class, 'destroy']
 )->name('media.delete');
+
+Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
+
+Route::post('/register', [AuthController::class, 'register'])->name('register.post');
+

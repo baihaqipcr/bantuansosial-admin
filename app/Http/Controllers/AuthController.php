@@ -2,82 +2,91 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User; // gunakan model User
 use Illuminate\Http\Request;
-use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    // ===========================
+    //  FORM LOGIN
+    // ===========================
     public function showLoginForm()
     {
         return view('admin.login-form');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    // ===========================
+    //  FORM REGISTER
+    // ===========================
+    public function showRegisterForm()
     {
-        //
+        return view('admin.register-form');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    // ===========================
+    //  REGISTER ACCOUNT
+    // ===========================
+    public function register(Request $request)
+    {
+        $request->validate([
+            'username' => 'required|unique:users,username',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:6|confirmed'
+        ]);
+
+        // Simpan user
+        User::create([
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            // 'nama_lengkap' => $request->nama_lengkap,  ← kalau kamu pakai
+        ]);
+
+        return redirect()->route('login')->with('success', 'Registrasi berhasil! Silakan login.');
+    }
+
+    // ===========================
+    //  LOGIN ACCOUNT
+    // ===========================
     public function login(Request $request)
     {
-        $credentials = $request->validate([
+        $request->validate([
             'username' => 'required',
-            'password' => 'required'
+            'password' => 'required',
         ]);
 
-        // Coba login
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            return redirect()->route('dashboard');
+        // Cek apakah username ada di database
+        $users = User::where('username', $request->username)->first();
+
+        if (!$users) {
+            return back()->withErrors([
+                'login_error' => 'Akun belum terdaftar!',
+            ]);
         }
 
-        // Jika gagal
-        return back()->withErrors([
-            'login_error' => 'Username atau password salah!',
-        ]);
-    
+        // Cek password
+        if (!Hash::check($request->password, $users->password)) {
+            return back()->withErrors([
+                'login_error' => 'Password salah!',
+            ]);
+        }
+
+        // Login manual (tanpa Auth::attempt)
+        Auth::login($users);
+        $request->session()->regenerate();
+
+        return redirect()->route('dashboard');
     }
 
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    // ===========================
+    //  LOGOUT
+    // ===========================
+    public function logout(Request $request)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        Auth::logout();
+        $request->session()->invalidate();
+        return redirect()->route('login');
     }
 }

@@ -220,24 +220,6 @@
             }
         }
 
-        .register-btn {
-            margin-top: 20px;
-            background: #ff542e;
-            border: none;
-            padding: 12px 35px;
-            border-radius: 25px;
-            color: #fff;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.3s ease;
-        }
-
-        .register-btn:hover {
-            background: #ff693b;
-            box-shadow: 0 0 15px rgba(255, 80, 50, 0.6);
-        }
-
-
 
         h1 {
             font-weight: 800;
@@ -334,23 +316,23 @@
             <div class="login-content">
                 <h2 class="login-title">Selamat Datang di Bantuan Sosial dan Pemanfaatan</h2>
                 <p class="login-subtitle">Silakan masuk ke akun Anda</p>
-                <form method="POST" action="{{ route('login.post') }}">
+                <form action="{{ route('register.post') }}" method="POST">
                     @csrf
-                    <label for="username">Nama Admin</label>
-                    <input type="text" id="username" name="username" value="{{ old('username') }}" required>
+                    <label>Username</label>
+                    <input type="text" name="username" required>
 
-                    <label for="password">Kata Sandi</label>
-                    <input type="password" id="password" name="password" required>
+                    <label>Email</label>
+                    <input type="email" name="email" required>
 
-                    @error('login_error')
-                    <p style="color:red">{{ $message }}</p>
-                    @enderror
+                    <label>Password</label>
+                    <input type="password" name="password" required>
 
-                    <button type="submit">Masuk</button>
-                    <div class="register-btn">
-                        <a href="{{ route('register') }}" class="register-btn">Daftar Akun</a>
-                    </div>
+                    <label>Konfirmasi Password</label>
+                    <input type="password" name="password_confirmation" required>
+
+                    <button type="submit">Daftar</button>
                 </form>
+
             </div>
         </div>
         <div class="login-side-image">
