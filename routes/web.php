@@ -13,6 +13,8 @@ use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\PendaftarController;
 use App\Http\Controllers\ProgramBantuanController;
 use App\Http\Controllers\MultipleuploadsController;
+use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\ResetPasswordController;
 
 
 
@@ -24,6 +26,20 @@ Route::middleware('guest')->group(function () {
     Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
     Route::post('/register', [AuthController::class, 'register'])->name('register.post');
 
+    Route::get('/forgot-password', [ForgotPasswordController::class, 'showForm'])
+        ->name('password.request');
+
+    // kirim email reset
+    Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLink'])
+        ->name('password.email');
+
+    // form password baru
+    Route::get('/reset-password/{token}', [ResetPasswordController::class, 'showResetForm'])
+        ->name('password.reset');
+
+    // simpan password baru
+    Route::post('/reset-password', [ResetPasswordController::class, 'reset'])
+        ->name('password.update');
 });
 
 Route::get('/', function () {
@@ -31,6 +47,12 @@ Route::get('/', function () {
 });
 
 Route::middleware('auth')->group(function () {
+
+    Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])
+        ->name('profile.index');
+
+    Route::post('/profile', [App\Http\Controllers\ProfileController::class, 'update'])
+        ->name('profile.update');
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 

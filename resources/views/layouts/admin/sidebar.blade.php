@@ -5,17 +5,22 @@
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
-                        <img class="rounded-circle me-lg-2"
-                            src="{{ Auth::user()->foto_profil ? asset('storage/' . Auth::user()->foto_profil) : asset('assets-admin/img/default.png') }}"
-                            alt="foto_profil" style="width:40px; height:40px; object-fit:cover;">
-                        <div
-                            class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
-                        </div>
-                    </div>
-                    <div class="ms-3">
+                        @auth
+                        @if(Auth::user()->foto_profil)
+                        <img src="{{ Storage::url(Auth::user()->foto_profil) }}"
+                            class="rounded-circle me-2"
+                            style="width:40px; height:40px; object-fit:cover;">
+                        @else
+                        <img src="{{ asset('assets-admin/img/default.png') }}"
+                            class="rounded-circle me-2"
+                            style="width:40px; height:40px;">
+                        @endif
+
                         <span class="d-none d-lg-inline-flex">
-                            {{ Auth::user()->username}}
+                            {{ Auth::user()->username }}
                         </span>
+                        @endauth
+
                     </div>
                 </div>
                 <div class="navbar-nav w-100">

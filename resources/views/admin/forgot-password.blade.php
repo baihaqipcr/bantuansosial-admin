@@ -358,31 +358,24 @@
             <div class="login-content">
                 <h2 class="login-title">Selamat Datang di Bantuan Sosial dan Pemanfaatan</h2>
                 <p class="login-subtitle">Silakan masuk ke akun Anda</p>
-                <form method="POST" action="{{ route('login.post') }}">
+                <form method="POST" action="{{ route('password.email') }}">
                     @csrf
-                    <label for="username">Nama Admin</label>
-                    <input type="text" id="username" name="username" value="{{ old('username') }}" required>
 
-                    <label for="password">Kata Sandi</label>
-                    <input type="password" id="password" name="password" required>
+                    <h3>Lupa Password</h3>
 
-                    @error('login_error')
+                    <input type="email" name="email" placeholder="Email terdaftar" required>
+
+                    <button type="submit">Kirim Link Reset</button>
+
+                    @if(session('success'))
+                    <p style="color:green">{{ session('success') }}</p>
+                    @endif
+
+                    @error('email')
                     <p style="color:red">{{ $message }}</p>
                     @enderror
-
-                    <button type="submit">Masuk</button>
-
-                    <a href="{{ route('password.request') }}"
-                        style="color:#ff693b;font-size:14px;">
-                        Lupa password? (Coming Soon)
-                    </a>
-
-
-                    <p class="login-subtitle"> Belum punya akun? Silakan Daftar </p>
-
-                    <a href="{{ route('register') }}" class="register-btn">Daftar Akun</a>
-
                 </form>
+
             </div>
         </div>
         <div class="login-side-image">

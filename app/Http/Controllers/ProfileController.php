@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -11,7 +13,9 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.profile.index', [
+            'user' => Auth::user()
+        ]);
     }
 
     /**
@@ -49,9 +53,26 @@ class ProfileController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+        $user = Auth::user();
+
+        $request->validate([
+            'username' => 'required|string|max:255',
+            'email' => 'required|email',
+            'foto_profil' => 'nullable|image|max:2048',
+        ]);
+
+        if ($request->hasFile('foto_profil')) {
+            $path = $request->file('foto_profil')->store('foto-profil', 'public');
+            $user->foto_profil = $path;
+        }
+
+        $user->username = $request->username;
+        $user->email = $request->email;
+        $user->save();
+
+        return redirect()->route('dashboard')->with('success', 'Profil berhasil diperbarui');
     }
 
     /**

@@ -13,19 +13,29 @@
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
 
                 {{-- Foto Profil --}}
-                <img src="{{ asset('storage/foto_profil' . Auth::user()->foto_profil) }}" width="80"
-                    alt="Profile" style="width:40px; height:40px; object-fit:cover;">
+                @auth
+                @if(Auth::user()->foto_profil)
+                <img src="{{ Storage::url(Auth::user()->foto_profil) }}"
+                    class="rounded-circle me-2"
+                    style="width:40px; height:40px; object-fit:cover;">
+                @else
+                <img src="{{ asset('assets-admin/img/default.png') }}"
+                    class="rounded-circle me-2"
+                    style="width:40px; height:40px;">
+                @endif
 
-
-                {{-- Nama User (aman walau belum login) --}}
                 <span class="d-none d-lg-inline-flex">
-                    {{ Auth::user()->username}}
+                    {{ Auth::user()->username }}
                 </span>
+                @endauth
 
             </a>
 
             <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
-                <a href="#" class="dropdown-item">My Profile</a>
+                <a href="{{ route('profile.index') }}" class="dropdown-item">
+                    <i class="fa fa-user me-2"></i> Profil Saya
+                </a>
+
                 <a href="#" class="dropdown-item">Settings</a>
 
                 {{-- Logout --}}
