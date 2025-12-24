@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pelanggan;
 use Illuminate\Http\Request;
+use App\Models\VerifikasiLapangan;
 use App\Http\Controllers\Controller;
 
 class PelangganController extends Controller
@@ -18,9 +19,13 @@ class PelangganController extends Controller
         $searchableColumns = ['nama_awal_penerima', 'nama_akhir_penerima', 'kelamin', 'email', 'no_tlp'];
 
         $data['dataPelanggan'] = Pelanggan::filter($request, $filterableColumns)
-        ->search($request, $searchableColumns)
-        ->paginate(5)->onEachSide(2);
+            ->search($request, $searchableColumns)
+            ->paginate(5)->onEachSide(2);
         return view('admin.pelanggan.index', $data);
+
+        $verifikasiLapangan = VerifikasiLapangan::with('pendaftar')->get();
+
+        return view('pelanggan.index', compact('verifikasi_lapangan'));
     }
 
     /**
@@ -38,17 +43,18 @@ class PelangganController extends Controller
     {
         // dd($request->all());
 
+        $data['foto_profil'] = $request->foto_profil;
         $data['nama_awal_penerima'] = $request->nama_awal_penerima;
-		$data['nama_akhir_penerima'] = $request->nama_akhir_penerima;
-		$data['tgl_lahir'] = $request->tgl_lahir;
-		$data['kelamin'] = $request->kelamin;
-		$data['role'] = $request->role;
-		$data['email'] = $request->email;
-		$data['no_tlp'] = $request->no_tlp;
-		
-		Pelanggan::create($data);
-		
-		return redirect()->route('pelanggan.index')->with('success','Penambahan Data Berhasil!');
+        $data['nama_akhir_penerima'] = $request->nama_akhir_penerima;
+        $data['tgl_lahir'] = $request->tgl_lahir;
+        $data['kelamin'] = $request->kelamin;
+        $data['role'] = $request->role;
+        $data['email'] = $request->email;
+        $data['no_tlp'] = $request->no_tlp;
+
+        Pelanggan::create($data);
+
+        return redirect()->route('pelanggan.index')->with('success', 'Penambahan Data Berhasil!');
     }
 
     /**
@@ -64,8 +70,8 @@ class PelangganController extends Controller
      */
     public function edit(string $id)
     {
-         $data['dataPelanggan'] = Pelanggan::findOrFail($id);
-         return view('admin.pelanggan.edit', $data);
+        $data['dataPelanggan'] = Pelanggan::findOrFail($id);
+        return view('admin.pelanggan.edit', $data);
     }
 
     /**
@@ -73,9 +79,11 @@ class PelangganController extends Controller
      */
     public function update(Request $request, string $id)
     {
-         $pelanggan_id = $id;
+
+        $pelanggan_id = $id;
         $pelanggan    = Pelanggan::findOrFail($pelanggan_id);
 
+        $pelanggan->foto_profil = $request->foto_profil;
         $pelanggan->nama_awal_penerima = $request->nama_awal_penerima;
         $pelanggan->nama_akhir_penerima  = $request->nama_akhir_penerima;
         $pelanggan->tgl_lahir   = $request->tgl_lahir;
@@ -83,7 +91,8 @@ class PelangganController extends Controller
         $pelanggan->role     = $request->role;
         $pelanggan->email      = $request->email;
         $pelanggan->no_tlp      = $request->no_tlp;
-        
+
+
 
         $pelanggan->save();
         return redirect()->route('pelanggan.index')->with('success', 'Perubahan Data Berhasil');
@@ -97,5 +106,9 @@ class PelangganController extends Controller
         $pelanggan = Pelanggan::findOrFail($id);
         $pelanggan->delete();
         return redirect()->route('pelanggan.index')->with('Delete', 'Data berhasil dihapus');
+    }
+    public function verifikasi()
+    {
+        return $this->hasOne(VerifikasiLapangan::class);
     }
 }

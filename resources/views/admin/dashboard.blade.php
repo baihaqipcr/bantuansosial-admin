@@ -27,7 +27,7 @@
     <link href="{{ asset('assets-admin/css/bootstrap.min.css') }}" rel="stylesheet">
 
     <link href="{{ asset('assets-admin/css/style.css') }}" rel="stylesheet">
-    
+
 </head>
 
 <body>
@@ -49,25 +49,40 @@
 
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
-                    <!-- Chart 1 -->
                     <div class="col-sm-12 col-xl-6">
-                        <div class="bg-secondary text-center rounded p-4">
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h6 class="mb-0">Data Statistik</h6>
-                                <a href="#">Lihat Detail</a>
-                            </div>
-                            <canvas id="dataChart"></canvas>
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">Single Line Chart</h6>
+                            <canvas id="line-chart"></canvas>
                         </div>
                     </div>
-
-                    <!-- Chart 2 -->
                     <div class="col-sm-12 col-xl-6">
-                        <div class="bg-secondary text-center rounded p-4">
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h6 class="mb-0">Perbandingan Jumlah</h6>
-                                <a href="#">Lihat Detail</a>
-                            </div>
-                            <canvas id="comparisonChart"></canvas>
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">Multiple Line Chart</h6>
+                            <canvas id="salse-revenue"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">Single Bar Chart</h6>
+                            <canvas id="bar-chart"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">Multiple Bar Chart</h6>
+                            <canvas id="worldwide-sales"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">Pie Chart</h6>
+                            <canvas id="pie-chart"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">Doughnut Chart</h6>
+                            <canvas id="doughnut-chart"></canvas>
                         </div>
                     </div>
                 </div>
@@ -75,75 +90,95 @@
 
             <!-- Chart.js -->
             <script>
-                const dataChart = document.getElementById('dataChart').getContext('2d');
-                const comparisonChart = document.getElementById('comparisonChart').getContext('2d');
+                document.addEventListener('DOMContentLoaded', function() {
 
-                // Data dari Laravel
-                const penerima = {{ $penerima ?? 0 }};
-                const pendaftar = {{ $pendaftar ?? 0 }};
-                const program = {{ $program ?? 0 }};
+                    const dataChart = document.getElementById('line-chart').getContext('2d');
+                    const comparisonChart = document.getElementById('bar-chart').getContext('2d');
 
-                // Chart 1 - Pie Chart
-                new Chart(dataChart, {
-                    type: 'pie',
-                    data: {
-                        labels: ['Penerima', 'Pendaftar', 'Program'],
-                        datasets: [{
-                            data: [penerima, pendaftar, program],
-                            backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
-                        }]
-                    },
-                    options: {
-                        plugins: {
-                            legend: {
-                                labels: {
-                                    color: '#fff'
+                    const penerima = {
+                        {
+                            $penerima ?? 0
+                        }
+                    };
+                    const pendaftar = {
+                        {
+                            $pendaftar ?? 0
+                        }
+                    };
+                    const program = {
+                        {
+                            $program ?? 0
+                        }
+                    };
+
+                    // PIE CHART
+                    new Chart(dataChart, {
+                        type: 'pie',
+                        data: {
+                            labels: ['Penerima', 'Pendaftar', 'Program'],
+                            datasets: [{
+                                data: [penerima, pendaftar, program],
+                                backgroundColor: ['#ff4d4d', '#4da6ff', '#7dd56f']
+                            }]
+                        },
+                        options: {
+                            plugins: {
+                                legend: {
+                                    labels: {
+                                        color: '#fff'
+                                    }
                                 }
                             }
                         }
-                    }
-                });
+                    });
 
-                // Chart 2 - Bar Chart
-                new Chart(comparisonChart, {
-                    type: 'bar',
-                    data: {
-                        labels: ['Penerima', 'Pendaftar', 'Program'],
-                        datasets: [{
-                            label: 'Jumlah Data',
-                            data: [penerima, pendaftar, program],
-                            backgroundColor: ['#4BC0C0', '#9966FF', '#FF9F40']
-                        }]
-                    },
-                    options: {
-                        scales: {
-                            x: {
-                                ticks: {
-                                    color: '#fff'
+                    // BAR CHART
+                    new Chart(comparisonChart, {
+                        type: 'bar',
+                        data: {
+                            labels: ['Penerima', 'Pendaftar', 'Program'],
+                            datasets: [{
+                                label: 'Jumlah Data',
+                                data: [penerima, pendaftar, program],
+                                backgroundColor: ['#ff4d4d', '#4da6ff', '#7dd56f']
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                x: {
+                                    ticks: {
+                                        color: '#fff'
+                                    }
+                                },
+                                y: {
+                                    ticks: {
+                                        color: '#fff',
+                                        stepSize: 1
+                                    }
                                 }
                             },
-                            y: {
-                                ticks: {
-                                    color: '#fff',
-                                    stepSize: 1
-                                }
-                            }
-                        },
-                        plugins: {
-                            legend: {
-                                labels: {
-                                    color: '#fff'
+                            plugins: {
+                                legend: {
+                                    labels: {
+                                        color: '#fff'
+                                    }
                                 }
                             }
                         }
-                    }
+                    });
+
                 });
             </script>
 
 
 
 
+
+
             <!-- Main Content -->
+
+
+
             <div class="container-fluid pt-4 px-4">
                 @yield('content')
             </div>

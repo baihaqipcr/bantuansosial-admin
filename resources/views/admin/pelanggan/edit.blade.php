@@ -142,7 +142,28 @@
                                 @enderror
                             </div>
                         </div>
+                    </div>
 
+                     <div class="mb-3">
+                        <label class="form-label">Foto Verifikasi</label>
+
+                        {{-- Preview foto lama --}}
+                        <div class="mb-2">
+                            <img
+                                src="{{ $dataPelanggan->foto_profil
+                                    ? asset('storage/'.$dataPelanggan->foto_profil)
+                                    : asset('assets/img/default-avatar.png') }}"
+                                width="120"
+                                class="rounded border"
+                                style="object-fit: cover;">
+                        </div>
+
+                        <input type="file"
+                               name="foto_verifikasi"
+                               class="form-control">
+                        <small class="text-muted">
+                            Kosongkan jika tidak ingin mengganti foto
+                        </small>
                     </div>
 
                     <!-- BUTTON -->

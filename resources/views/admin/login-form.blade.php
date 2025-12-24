@@ -93,6 +93,8 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center;
+            display: block;
         }
 
         .login-container::before {
@@ -386,7 +388,7 @@
             </div>
         </div>
         <div class="login-side-image">
-            <img src="https://tribratanews.polri.go.id/web/image/blog.post/50926/image">
+            <img src="assets/img/logo2-removebg-preview.png">
         </div>
 
     </div>

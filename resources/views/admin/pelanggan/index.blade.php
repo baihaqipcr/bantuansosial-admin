@@ -63,6 +63,7 @@
                         class="table table-centered table-nowrap mb-0 rounded table-dark-custom table-bordered">
                         <thead>
                             <tr>
+                                <th class="border-0">Foto Profil</th>
                                 <th class="border-0">Nama Awal</th>
                                 <th class="border-0">Nama Akhir</th>
                                 <th class="border-0">Tanggal Lahir</th>
@@ -76,6 +77,21 @@
                         <tbody>
                             @foreach ($dataPelanggan as $item)
                             <tr>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <img
+                                            src="{{ $item->foto_profil
+                    ? asset('storage/'.$item->foto_profil)
+                    : asset('assets/img/default-avatar.png') }}"
+                                            width="40"
+                                            height="40"
+                                            class="rounded-circle"
+                                            style="object-fit: cover;">
+
+                                        <span></span>
+                                    </div>
+                                </td>
+
                                 <td>{{ $item->nama_awal_penerima }}</td>
                                 <td>{{ $item->nama_akhir_penerima }}</td>
                                 <td>{{ $item->tgl_lahir }}</td>
@@ -86,16 +102,17 @@
                                 <td>
                                     <a href="{{ route('pelanggan.edit', $item->pelanggan_id) }}"
                                         class="btn btn-info btn-sm">Edit</a>
+
                                     <form action="{{ route('pelanggan.destroy', $item->pelanggan_id) }}"
-                                        method="POST" style="display:inline">
+                                        method="POST" class="d-inline">
                                         @csrf @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
                                     </form>
                                 </td>
-
                             </tr>
                             @endforeach
                         </tbody>
+
                     </table>
                     <div class="mt-3">
                         {{ $dataPelanggan->links('pagination::bootstrap-5') }}

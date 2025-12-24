@@ -125,12 +125,12 @@
     var myChart3 = new Chart(ctx3, {
         type: "line",
         data: {
-            labels: [50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150],
+            labels: ['Pelanggan', 'Penerima', 'Pendaftar', 'Program'],
             datasets: [{
-                label: "Salse",
+                label: "Jumlah Data",
                 fill: false,
                 backgroundColor: "rgba(235, 22, 22, .7)",
-                data: [7, 8, 8, 9, 9, 9, 10, 11, 14, 14, 15]
+                data: [penerima, pendaftar, program]
             }]
         },
         options: {
@@ -144,7 +144,7 @@
     var myChart4 = new Chart(ctx4, {
         type: "bar",
         data: {
-            labels: ["Italy", "France", "Spain", "USA", "Argentina"],
+            labels: ['Pelanggan', 'Penerima', 'Pendaftar', 'Program'],
             datasets: [{
                 backgroundColor: [
                     "rgba(235, 22, 22, .7)",
@@ -153,7 +153,7 @@
                     "rgba(235, 22, 22, .4)",
                     "rgba(235, 22, 22, .3)"
                 ],
-                data: [55, 49, 44, 24, 15]
+                data: [penerima, pendaftar, program]
             }]
         },
         options: {

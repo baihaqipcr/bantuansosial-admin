@@ -11,10 +11,11 @@ use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\PendaftarController;
+use App\Http\Controllers\ResetPasswordController;
+use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\ProgramBantuanController;
 use App\Http\Controllers\MultipleuploadsController;
-use App\Http\Controllers\ForgotPasswordController;
-use App\Http\Controllers\ResetPasswordController;
+use App\Http\Controllers\VerifikasiLapanganController;
 
 
 
@@ -57,6 +58,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::get('/bansos', [BansosController::class, 'index'])->name('bansos.index');
+
+    Route::resource('/verifikasi', VerifikasiLapanganController::class);
 
     Route::get('/home', [HomeController::class, 'index']);
 
