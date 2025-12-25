@@ -12,13 +12,13 @@
                         </a>
                     </li>
                     <li class="breadcrumb-item"><a href="#">Program Bantuan</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Tambah Penerima Bantuan</li>
+                    <li class="breadcrumb-item active" aria-current="page">Edit</li>
                 </ol>
             </nav>
             <div class="d-flex justify-content-between w-100 flex-wrap">
                 <div class="mb-3 mb-lg-0">
-                    <h1 class="h4">Tambah Program Bantuan</h1>
-                    <p class="mb-0">Form untuk menambahkan data program bantuan.</p>
+                    <h1 class="h4">Edit Program Bantuan</h1>
+                    <p class="mb-0">Form untuk mengedit data program bantuan.</p>
                 </div>
                 <div>
                     <a href="{{ route('program.index') }}" class="btn btn-primary"><i class="far fa-question-circle me-1"></i> Kembali</a>

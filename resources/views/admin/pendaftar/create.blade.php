@@ -17,7 +17,7 @@
             </nav>
             <div class="d-flex justify-content-between w-100 flex-wrap">
                 <div class="mb-3 mb-lg-0">
-                    <h1 class="h4">Tambah Program Bantuan</h1>
+                    <h1 class="h4">Tambah Pendaftar</h1>
                     <p class="mb-0">Form untuk menambahkan data pendaftar.</p>
                 </div>
                 <div>
