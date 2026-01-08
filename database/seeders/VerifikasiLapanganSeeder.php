@@ -21,13 +21,7 @@ class VerifikasiLapanganSeeder extends Seeder
 
             for ($i = 1; $i <= 5; $i++) {
                 Pendaftar::create([
-                    'nama_awal_penerima'  => $faker->firstName(),
-                    'nama_akhir_penerima' => $faker->lastName(),
-                    'tgl_lahir'           => $faker->date('Y-m-d', '-20 years'),
-                    'kelamin'             => $faker->randomElement(['Laki-laki', 'Perempuan']),
-                    'email'               => $faker->unique()->safeEmail(),
-                    'no_tlp'              => $faker->numerify('08##########'),
-                    'foto_profil'         => null,
+                    'program_id' => rand(1, 3)
                 ]);
             }
         }
