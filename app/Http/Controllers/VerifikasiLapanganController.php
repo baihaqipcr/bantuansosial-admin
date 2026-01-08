@@ -12,9 +12,10 @@ class VerifikasiLapanganController extends Controller
     /**
      * Display a listing of the resource.
      */
+    
     public function index()
     {
-        $verifikasi_lapangan = VerifikasiLapangan::with('verifikasi')->get();
+        $verifikasi_lapangan = VerifikasiLapangan::with('pendaftar')->get();
         return view('admin.verifikasi.index', compact('verifikasi_lapangan'));
     }
 

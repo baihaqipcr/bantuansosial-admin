@@ -15,6 +15,7 @@ class VerifikasiLapangan extends Model
 
     protected $fillable = [
         'pendaftar_id',
+        'nama_pelanggan',
         'petugas',
         'tanggal_verifikasi',
         'catatan',

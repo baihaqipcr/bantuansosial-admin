@@ -53,7 +53,7 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->foto_verifikasi }}</td>
-                                <td>{{ $item->pelanggan->nama_awal_pelanggan ?? '-' }}</td>
+                                <td>{{ $item->nama_pelanggan}}</td>
                                 <td>{{ $item->petugas }}</td>
                                 <td>{{ $item->tanggal }}</td>
                                 <td>{{ $item->skor }}</td>
