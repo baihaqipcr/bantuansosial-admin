@@ -322,7 +322,7 @@
                     @csrf
 
                     <label>Username</label>
-                    <input type="text" name="name" required>
+                    <input type="text" name="username" required>
 
                     <label>Email</label>
                     <input type="email" name="email" required>
