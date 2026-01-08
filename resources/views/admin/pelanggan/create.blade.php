@@ -62,8 +62,8 @@
                                 <label for="kelamin" class="form-label">Kelamin</label>
                                 <select name="kelamin" class="form-select">
                                     <option selected disabled>Pilih Gender</option>
-                                    <option value="Laki-laki">Laki-laki</option>
-                                    <option value="Perempuan">Perempuan</option>
+                                    <option value="Male">Laki-laki</option>
+                                    <option value="Female">Perempuan</option>
                                     <option value="Other">Other</option>
                                 </select>
                             </div>
