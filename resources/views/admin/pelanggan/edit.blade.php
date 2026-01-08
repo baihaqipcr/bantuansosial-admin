@@ -86,8 +86,8 @@
                                     class="form-select @error('kelamin') is-invalid @enderror">
 
                                     <option value="" disabled {{ old('kelamin', $dataPelanggan->kelamin) == '' ? 'selected' : '' }}>Pilih Gender</option>
-                                    <option value="Male" {{ old('kelamin', $dataPelanggan->kelamin) == 'Male' ? 'selected' : '' }}>Laki-laki</option>
-                                    <option value="Female" {{ old('kelamin', $dataPelanggan->kelamin) == 'Female' ? 'selected' : '' }}>Perempuan</option>
+                                    <option value="Male" {{ old('kelamin', $dataPelanggan->kelamin) == 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
+                                    <option value="Female" {{ old('kelamin', $dataPelanggan->kelamin) == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
                                     <option value="Other" {{ old('kelamin', $dataPelanggan->kelamin) == 'Other' ? 'selected' : '' }}>Other</option>
                                 </select>
 
