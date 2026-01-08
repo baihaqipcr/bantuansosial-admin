@@ -19,7 +19,7 @@ class Pelanggan extends Model
         'email',
         'no_tlp',
     ];
- public function scopeFilter(Builder $query, $request, array $filterableColumns): Builder
+    public function scopeFilter(Builder $query, $request, array $filterableColumns): Builder
     {
         foreach ($filterableColumns as $column) {
             if ($request->filled($column)) {
@@ -28,8 +28,8 @@ class Pelanggan extends Model
         }
         return $query;
     }
-    
-     public function scopeSearch($query, $request, array $columns)
+
+    public function scopeSearch($query, $request, array $columns)
     {
         if ($request->filled('search')) {
             $query->where(function ($q) use ($request, $columns) {
@@ -38,5 +38,18 @@ class Pelanggan extends Model
                 }
             });
         }
+    }
+    public function getInisialAttribute()
+    {
+        $namaAwal  = trim($this->nama_awal_penerima ?? '');
+        $namaAkhir = trim($this->nama_akhir_penerima ?? '');
+
+        if ($namaAwal && $namaAkhir) {
+            return strtoupper(
+                mb_substr($namaAwal, 0, 1) .
+                    mb_substr($namaAkhir, 0, 1)
+            );
+        }
+        return strtoupper(mb_substr($namaAwal, 0, 2));
     }
 };
