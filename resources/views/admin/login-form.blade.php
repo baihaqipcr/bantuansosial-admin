@@ -362,8 +362,8 @@
                 <p class="login-subtitle">Silakan masuk ke akun Anda</p>
                 <form method="POST" action="{{ route('login.post') }}">
                     @csrf
-                    <label for="username">Nama Admin</label>
-                    <input type="text" id="username" name="username" value="{{ old('username') }}" required>
+                    <label for="name">Nama Admin</label>
+                    <input type="text" id="name" name="name" value="{{ old('username') }}" required>
 
                     <label for="password">Kata Sandi</label>
                     <input type="password" id="password" name="password" required>
