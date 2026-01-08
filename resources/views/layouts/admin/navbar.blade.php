@@ -14,16 +14,14 @@
 
                 {{-- Foto Profil --}}
                 @auth
-                @if ($item->foto_profil)
-                <img src="{{ asset('storage/'.$item->foto_profil) }}"
-                    width="40"
-                    height="40"
-                    class="rounded-circle"
-                    style="object-fit: cover;">
+                @if(Auth::user()->foto_profil)
+                <img src="{{ Storage::url(Auth::user()->foto_profil) }}"
+                    class="rounded-circle me-2"
+                    style="width:40px; height:40px; object-fit:cover;">
                 @else
-                <div class="avatar-inisial">
-                    {{ $item->inisial }}
-                </div>
+                <img src="{{ asset('assets-admin/img/default.png') }}"
+                    class="rounded-circle me-2"
+                    style="width:40px; height:40px;">
                 @endif
 
                 <span class="d-none d-lg-inline-flex">
