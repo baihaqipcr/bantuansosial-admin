@@ -20,7 +20,7 @@ class CreatePelangganDummy extends Seeder
         'nama_awal_penerima'   => $faker->firstName,                  // Nama depan Indonesia
         'nama_akhir_penerima'  => $faker->lastName,                   // Nama belakang Indonesia
         'tgl_lahir'            => $faker->date('Y-m-d', '2005-12-31'),
-        'kelamin'              => $faker->randomElement(['Laki-laki', 'Perempuan']),
+        'kelamin'              => $faker->randomElement(['Male', 'Female']),
         'email'                => $faker->unique()->safeEmail,
         'no_tlp'               => $faker->numerify('08##########'),   // Nomor Indonesia
         'role'                 => $faker->randomElement(['Administrator', 'Member', 'Mitra']),
