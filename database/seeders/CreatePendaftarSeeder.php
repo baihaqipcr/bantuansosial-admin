@@ -49,8 +49,6 @@ class CreatePendaftarSeeder extends Seeder
             ['program_id' => 3, 'warga_id' => 37, 'keterangan' => 'Dokumen diterima'],
             ['program_id' => 2, 'warga_id' => 38, 'keterangan' => 'Penerima cadangan'],
             ['program_id' => 1, 'warga_id' => 39, 'keterangan' => 'Survey belum dijadwalkan'],
-
-            // 60 more generated data
         ];
 
         for ($i = 40; $i <= 109; $i++) {

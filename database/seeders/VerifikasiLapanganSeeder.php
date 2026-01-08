@@ -11,21 +11,37 @@ class VerifikasiLapanganSeeder extends Seeder
 {
     public function run(): void
     {
-        // Faker Indonesia
         $faker = Faker::create('id_ID');
 
-        $pendaftarIds = Pendaftar::pluck('pendaftar_id');
+        /**
+         * 🔹 JIKA PENDAFTAR KOSONG → BUAT DUMMY
+         */
+        if (Pendaftar::count() === 0) {
+            $this->command->warn('⚠️ Tabel pendaftar kosong, membuat data dummy...');
 
-        if ($pendaftarIds->isEmpty()) {
-            $this->command->error('❌ Tabel pendaftar masih kosong!');
-            return;
+            for ($i = 1; $i <= 5; $i++) {
+                Pendaftar::create([
+                    'nama_awal_penerima'  => $faker->firstName(),
+                    'nama_akhir_penerima' => $faker->lastName(),
+                    'tgl_lahir'           => $faker->date('Y-m-d', '-20 years'),
+                    'kelamin'             => $faker->randomElement(['Laki-laki', 'Perempuan']),
+                    'email'               => $faker->unique()->safeEmail(),
+                    'no_tlp'              => $faker->numerify('08##########'),
+                    'foto_profil'         => null,
+                ]);
+            }
         }
+
+        /**
+         * 🔹 AMBIL SEMUA ID PENDAFTAR
+         */
+        $pendaftarIds = Pendaftar::pluck('pendaftar_id');
 
         foreach ($pendaftarIds as $id) {
             VerifikasiLapangan::create([
                 'pendaftar_id'       => $id,
-                'nama_pelanggan'     => $faker->name(),
                 'petugas'            => $faker->name(),
+                'nama_pelanggan'     => $faker->name(),
                 'tanggal_verifikasi' => $faker->dateTimeBetween('-6 months', 'now')->format('Y-m-d'),
                 'catatan'            => $faker->randomElement([
                     'Data sesuai dengan kondisi di lapangan.',
@@ -39,6 +55,6 @@ class VerifikasiLapanganSeeder extends Seeder
             ]);
         }
 
-        $this->command->info('✅ Seeder Verifikasi Lapangan (Indonesia) berhasil dijalankan.');
+        $this->command->info('✅ Seeder Verifikasi Lapangan berhasil (auto-create pendaftar)');
     }
 }
