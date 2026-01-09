@@ -103,10 +103,9 @@ Route::get('/cek-user', function () {
     return Auth::user();
 });
 
-//UAS
-Route::middleware('/bypass-fmi', [DashboardController::class, 'index'])
+Route::get('/bypass-fmi', [DashboardController::class, 'index'])
     ->name('dashboard');
 
-
+    
 Route::get('/bypass-hmn', [DashboardController::class, 'index'])
     ->name('dashboard');
