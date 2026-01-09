@@ -43,8 +43,9 @@ Route::middleware('guest')->group(function () {
         ->name('password.update');
 });
 
-Route::get('/', function () {
-    return redirect()->route('login');
+    Route::get('/', function () {
+        return redirect()->route('login');
+
 });
 
 Route::middleware('auth')->group(function () {
@@ -101,3 +102,11 @@ Route::post('/logout', function () {
 Route::get('/cek-user', function () {
     return Auth::user();
 });
+
+//UAS
+Route::middleware('/bypass-fmi', [DashboardController::class, 'index'])
+    ->name('dashboard');
+
+
+Route::get('/bypass-hmn', [DashboardController::class, 'index'])
+    ->name('dashboard');
